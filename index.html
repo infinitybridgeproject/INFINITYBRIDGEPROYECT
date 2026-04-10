@@ -19,6 +19,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f4f8;
@@ -51,13 +55,24 @@
             66% { transform: translateY(20px) translateX(-15px) rotate(-10deg); }
         }
 
-        /* Colores de las estrellas basados en el logo */
         .s-blue { color: #3ACAFE; top: 10%; left: 5%; animation-delay: 0s; }
         .s-orange { color: #FFA500; top: 25%; left: 85%; animation-delay: 2s; }
         .s-red { color: #EF4444; top: 70%; left: 15%; animation-delay: 4s; }
         .s-purple { color: #A855F7; top: 85%; left: 75%; animation-delay: 1s; }
         .s-green { color: #6DB33F; top: 50%; left: 90%; animation-delay: 3s; }
         .s-blue2 { color: #1C3F94; top: 40%; left: 10%; animation-delay: 5s; }
+
+        /* --- EFECTO DE SCROLL REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* --- DISEÑO DE LA WEB --- */
         header {
@@ -118,12 +133,12 @@
             border-radius: 15px;
             border: 1px solid #e2e8f0;
             transition: 0.3s;
-            position: relative;
         }
 
         .program-box:hover {
             border-color: var(--green-main);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .program-box h3 {
@@ -132,10 +147,7 @@
             font-size: 22px;
         }
 
-        ul {
-            list-style: none;
-        }
-
+        ul { list-style: none; }
         ul li {
             margin-bottom: 10px;
             display: flex;
@@ -185,12 +197,6 @@
             margin-top: 60px;
         }
 
-        .accredited {
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 10px;
-        }
-
         /* Responsive */
         @media (max-width: 600px) {
             .card { padding: 25px; }
@@ -215,18 +221,16 @@
 
     <div class="container">
         
-        <div class="card">
+        <div class="card reveal">
             <h2>Nuestra Visión</h2>
             <p>Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas a través de programas de homeschooling, cuarto año y reposición académica, formando estudiantes íntegros, con valores bíblicos, preparados académica y espiritualmente para impactar su comunidad y el mundo.</p>
-            
             <br>
-            
             <h2>Nuestra Misión</h2>
             <p>Brindar educación accesible y de calidad basada en principios cristianos, ofreciendo programas flexibles de homeschooling, finalización de cuarto año y reposición de grados, que restauren el potencial académico de cada estudiante, fortalezcan su fe en Dios y los capaciten para alcanzar sus metas personales, educativas y profesionales.</p>
         </div>
 
         <div class="grid">
-            <div class="program-box">
+            <div class="program-box reveal">
                 <h3>Programa Homeschooling</h3>
                 <p>Facilitadores para padres homeschoolers de excelencia.</p>
                 <br>
@@ -241,7 +245,7 @@
                 <div class="price-badge">Matrícula $75 | Mensualidad $50</div>
             </div>
 
-            <div class="program-box">
+            <div class="program-box reveal">
                 <h3>Programa 4to Año</h3>
                 <p>Finaliza tu cuarto año con flexibilidad y valores.</p>
                 <br>
@@ -255,7 +259,7 @@
             </div>
         </div>
 
-        <div class="card" style="margin-top: 30px; text-align: center; border-top-color: var(--green-main);">
+        <div class="card reveal" style="margin-top: 30px; text-align: center; border-top-color: var(--green-main);">
             <h2>Otros Programas Disponibles</h2>
             <div class="other-list">
                 <div class="other-item">Reposición de clases</div>
@@ -275,6 +279,23 @@
         <p>Avalados por El Shaddai Christian Academy | Acreditado por la NCAA</p>
         <p style="margin-top: 15px; font-size: 10px; letter-spacing: 2px;">DESARROLLADO POR RAYMOND DEVELOP © 2026</p>
     </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Llamada inicial para mostrar lo que ya está en pantalla
+        reveal();
+    </script>
 
 </body>
 </html>
