@@ -10,6 +10,7 @@
             --blue-main: #1C3F94;
             --green-main: #6DB33F;
             --text-dark: #2D3748;
+            --text-gray: #718096; /* Gris para "Project" */
             --white: #FFFFFF;
         }
 
@@ -48,12 +49,12 @@
         .s-purple { color: #A855F7; top: 75%; left: 88%; }
         .s-green { color: #6DB33F; top: 45%; left: 92%; }
 
-        /* --- NAV / MENU HAMBURGUESA --- */
+        /* --- NAV / MENU HAMBURGUESA ANIMADO --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 15px 25px;
@@ -63,32 +64,64 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        /* ESTILO DEL LOGO EN EL NAV - Raymond Develop */
         .nav-logo {
-            font-weight: bold;
-            color: var(--blue-main);
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo-infinity { color: var(--blue-main); }
+        .logo-bridge { color: var(--green-main); }
+        .logo-project { color: var(--text-gray); font-weight: 400; font-size: 0.9em; }
+
+        /* Icono Hamburguesa Animado a X */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .menu-toggle {
-            display: block;
-            cursor: pointer;
-            font-size: 25px;
-            color: var(--blue-main);
+        .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--blue-main);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Transformación a X */
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
 
         .nav-menu {
             position: absolute;
-            top: 60px;
+            top: 0;
             right: -100%;
-            width: 250px;
+            width: 280px;
+            height: 100vh;
             background: var(--white);
+            display: flex;
             flex-direction: column;
-            text-align: center;
+            justify-content: center;
+            align-items: center;
             transition: 0.5s;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-            border-radius: 0 0 0 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             list-style: none;
-            padding: 20px 0;
+            z-index: 1001;
         }
 
         .nav-menu.active {
@@ -96,30 +129,32 @@
         }
 
         .nav-item {
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--blue-main);
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-link:hover {
             color: var(--green-main);
         }
 
-        /* --- HEADER TRANSPARENTE --- */
+        /* --- HEADER TRANSPARENTE CON LOGO --- */
         header {
             background: transparent;
-            padding: 100px 20px 50px 20px; /* Padding extra para el nav fijo */
+            padding: 120px 20px 60px 20px; /* Padding para el nav fijo */
             text-align: center;
         }
 
         header img {
-            max-width: 350px;
+            max-width: 380px;
             height: auto;
         }
 
@@ -135,17 +170,17 @@
 
         .card {
             background: rgba(255, 255, 255, 0.96);
-            padding: 45px;
+            padding: 50px;
             border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             border-top: 6px solid var(--blue-main);
         }
 
         h2 {
             color: var(--blue-main);
             margin-bottom: 25px;
-            font-size: 28px;
+            font-size: 30px;
             text-transform: uppercase;
             display: flex;
             align-items: center;
@@ -204,6 +239,7 @@
             font-weight: bold;
             transition: 0.3s;
         }
+        .btn-solicitud:hover { background: var(--green-main); }
 
         /* --- BOTÓN FLOTANTE --- */
         .fab-wrapper {
@@ -269,19 +305,28 @@
         }
 
         @media (max-width: 600px) {
-            header img { max-width: 250px; }
-            .card { padding: 25px; }
+            header img { max-width: 280px; }
+            .card { padding: 30px; }
+            .nav-logo { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">INFINITY BRIDGE</div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-logo">
+            <span class="logo-infinity">Infinity</span> 
+            <span class="logo-bridge">Bridge</span> 
+            <span class="logo-project">Project</span>
+        </div>
+        <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <ul class="nav-menu" id="navMenu">
             <li class="nav-item"><a href="#inicio" class="nav-link" onclick="toggleMenu()">Inicio</a></li>
-            <li class="nav-item"><a href="#vision" class="nav-link" onclick="toggleMenu()">Visión y Misión</a></li>
+            <li class="nav-item"><a href="#vision" class="nav-link" onclick="toggleMenu()">Visión</a></li>
             <li class="nav-item"><a href="#programas" class="nav-link" onclick="toggleMenu()">Programas</a></li>
             <li class="nav-item"><a href="#reposicion" class="nav-link" onclick="toggleMenu()">Reposición</a></li>
         </ul>
@@ -341,7 +386,7 @@
             </div>
         </div>
 
-        <div class="card reveal" id="reposicion" style="margin-top: 30px; border-top-color: var(--green-main);">
+        <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
             <h2>Reposición de Clases o Grados</h2>
             <p style="margin-bottom: 20px;">Ofrecemos programas especializados para restaurar el potencial académico del estudiante.</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 0 auto;">Llenar Solicitud de Reposición</a>
@@ -355,10 +400,13 @@
     </footer>
 
     <script>
-        // Función para el menú hamburguesa
+        // Función para el menú hamburguesa animado
         function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
+            const menuToggle = document.getElementById('mobileMenu');
+            const navMenu = document.getElementById('navMenu');
+            
+            menuToggle.classList.toggle('active'); // Anima las barras a X
+            navMenu.classList.toggle('active');   // Muestra/oculta el menú
         }
 
         // Función para el botón flotante
