@@ -22,7 +22,7 @@
             background-color: #f0f4f8;
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            overflow-x: hidden;
         }
 
         /* --- FONDO DE ESTRELLAS FUGACES LENTAS --- */
@@ -63,108 +63,81 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 10px 15px;
+            padding: 15px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-logo { font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-logo { font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px; }
         .logo-infinity { color: var(--blue-main); }
         .logo-bridge { color: var(--green-main); }
         .logo-project { color: var(--text-gray); font-weight: 400; font-size: 0.9em; }
 
-        .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 25px; height: 18px; cursor: pointer; z-index: 1002; }
-        .bar { width: 100%; height: 3px; background-color: var(--blue-main); border-radius: 10px; transition: 0.3s; }
-        .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-        .menu-toggle.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; z-index: 1002; transition: transform 0.3s ease-in-out; }
+        .bar { width: 100%; height: 3px; background-color: var(--blue-main); border-radius: 10px; transition: all 0.3s ease-in-out; }
+        .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-toggle.active .bar:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+        .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        .nav-menu { position: absolute; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; list-style: none; z-index: 1001; }
+        .nav-menu { position: absolute; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); list-style: none; z-index: 1001; }
         .nav-menu.active { right: 0; }
-        .nav-item { margin: 15px 0; }
-        .nav-link { text-decoration: none; color: var(--blue-main); font-weight: bold; font-size: 1.1rem; text-transform: uppercase; }
+        .nav-item { margin: 20px 0; }
+        .nav-link { text-decoration: none; color: var(--blue-main); font-weight: bold; font-size: 1.2rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-link:hover { color: var(--green-main); }
 
-        /* --- HEADER Y LOGO --- */
-        header { background: transparent; padding: 100px 10px 40px 10px; text-align: center; }
-        header img { max-width: 100%; width: 350px; height: auto; mix-blend-mode: multiply; }
+        header { background: transparent; padding: 120px 20px 60px 20px; text-align: center; }
+        header img { max-width: 380px; height: auto; mix-blend-mode: multiply; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
-
-        /* --- CARDS RESPONSIVAS --- */
-        .card { 
-            background: rgba(255, 255, 255, 0.96); 
-            padding: 30px 20px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
-            margin-bottom: 30px; 
-            border-top: 6px solid var(--blue-main);
-            overflow: hidden; /* Corta cualquier desborde */
-        }
-        
-        /* Título apilado corregido */
-        .title-stacked { margin-bottom: 20px; text-transform: uppercase; }
-        .title-stacked span { display: block; font-size: 0.7em; color: var(--text-gray); letter-spacing: 3px; margin-bottom: 5px; }
-        .title-stacked .main-title { 
-            font-size: 1.8rem; 
-            color: var(--blue-main); 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            font-weight: 800;
-        }
-        .title-stacked .main-title::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
-
-        h2 { color: var(--blue-main); margin-bottom: 20px; font-size: 1.6rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-        h2::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .program-box { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #edf2f7; display: flex; flex-direction: column; justify-content: space-between; }
-
-        ul { list-style: none; margin-bottom: 15px; font-size: 0.95rem; }
-        ul li::before { content: "✓ "; color: var(--green-main); font-weight: bold; }
-
-        .price-badge { background: #f8fafc; color: var(--blue-main); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px; text-align: center; border-left: 4px solid var(--green-main); }
-
-        .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; transition: 0.3s; width: 100%; }
-        .btn-solicitud:hover { background: var(--green-main); }
-
-        /* --- ARREGLO DE CONTACTO PARA MÓVIL --- */
-        .contact-info { list-style: none; padding: 0; }
-        .contact-info li { 
-            margin-bottom: 15px; 
-            font-size: 1rem; 
-            display: block; /* Cambiado de flex a block para evitar desbordes */
-            word-wrap: break-word; /* Rompe palabras largas */
-            overflow-wrap: break-word;
-        }
-        .contact-info a { 
-            color: var(--blue-main); 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: block; 
-            word-break: break-all; /* ESTO ARREGLA EL EMAIL QUE SE SALE */
-            margin-top: 5px;
-        }
-
-        .fab-wrapper { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
-        .fab-main { width: 55px; height: 55px; background: var(--green-main); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .fab-options { display: none; flex-direction: column; gap: 10px; margin-bottom: 10px; align-items: flex-end; }
-        .fab-options.active { display: flex; }
-        .fab-option { width: 140px; padding: 10px; background: white; color: var(--blue-main); text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 13px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; }
-
-        footer { text-align: center; padding: 40px 15px; background: var(--blue-main); color: white; margin-top: 50px; font-size: 0.9rem; }
-
-        /* --- ANIMACIÓN REVEAL --- */
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 480px) {
-            .title-stacked .main-title { font-size: 1.4rem; }
-            h2 { font-size: 1.3rem; }
-            header { padding-top: 80px; }
+        .card { background: rgba(255, 255, 255, 0.96); padding: 50px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); margin-bottom: 40px; border-top: 6px solid var(--blue-main); }
+        
+        .title-stacked { 
+            color: var(--blue-main); 
+            margin-bottom: 25px; 
+            font-size: 30px; 
+            text-transform: uppercase; 
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
         }
+        .title-stacked span { font-size: 0.6em; color: var(--text-gray); letter-spacing: 4px; }
+        .title-stacked .main-title { display: flex; align-items: center; gap: 15px; }
+        .title-stacked .main-title::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
+
+        h2 { color: var(--blue-main); margin-bottom: 25px; font-size: 30px; text-transform: uppercase; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .program-box { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid #edf2f7; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .program-box:hover { border-color: var(--green-main); transform: translateY(-10px); }
+
+        ul { list-style: none; margin-bottom: 20px; }
+        ul li::before { content: "✓ "; color: var(--green-main); font-weight: bold; }
+
+        .price-badge { display: block; background: #f8fafc; color: var(--blue-main); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px; text-align: center; border-left: 4px solid var(--green-main); }
+
+        .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 12px rgba(28, 63, 148, 0.2); }
+        .btn-solicitud:hover { background: var(--green-main); }
+
+        /* CONTACTO ESTILO LIMPIO - Raymond Develop */
+        .contact-list { list-style: none; }
+        .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
+        .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
+        .contact-list a:hover { color: var(--green-main); }
+
+        .fab-wrapper { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
+        .fab-main { width: 60px; height: 60px; background: var(--green-main); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 28px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(109, 179, 63, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(109, 179, 63, 0); } 100% { box-shadow: 0 0 0 0 rgba(109, 179, 63, 0); } }
+        .fab-options { display: none; flex-direction: column; gap: 12px; margin-bottom: 15px; }
+        .fab-options.active { display: flex; }
+        .fab-option { width: 160px; padding: 12px; background: white; color: var(--blue-main); text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 14px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 1px solid #eee; }
+
+        footer { text-align: center; padding: 60px 20px; background: var(--blue-main); color: white; margin-top: 80px; }
     </style>
 </head>
 <body>
@@ -189,8 +162,8 @@
 
     <div class="fab-wrapper">
         <div class="fab-options" id="fabOptions">
-            <a href="https://wa.me/17872013642" target="_blank" class="fab-option">💬 WhatsApp</a>
-            <a href="tel:+17872013642" class="fab-option">📞 Llamar</a>
+            <a href="https://wa.me/17872013642" target="_blank" class="fab-option">WhatsApp</a>
+            <a href="tel:+17872013642" class="fab-option">Llamar</a>
         </div>
         <div class="fab-main" onclick="toggleFab()">📞</div>
     </div>
@@ -205,89 +178,119 @@
                 <span>Nuestra</span>
                 <div class="main-title">Visión y Misión</div>
             </div>
-            <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia en Puerto Rico y EE.UU.</p>
-            <p style="margin-top:10px;"><strong>Misión:</strong> Brindar educación accesible y de calidad basada en principios cristianos.</p>
+            <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
+            <br>
+            <p><strong>Misión:</strong> Brindar educación accesible y de calidad basada en principios cristianos.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
                 <div>
-                    <h3 style="color: var(--green-main); margin-bottom:10px;">Homeschooling</h3>
+                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
+                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Somos facilitadores para padres homeschoolers..."</p>
                     <ul>
-                        <li>Pre-K a 12mo grado</li>
+                        <li>Grados: Pre-K a 12mo</li>
                         <li>Plataforma Interactiva</li>
-                        <li>Notas y Graduaciones</li>
+                        <li>Maestros disponibles</li>
+                        <li>Entrega de notas trimestrales</li>
+                        <li>Graduaciones y Cuadro de Honor</li>
                         <li>Salidas Grupales</li>
                     </ul>
-                    <div class="price-badge">Matrícula $75 | Mes $50</div>
+                    <div class="price-badge">Matrícula $75 | Mensualidad $50</div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform" target="_blank" class="btn-solicitud">Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
 
             <div class="program-box reveal">
                 <div>
-                    <h3 style="color: var(--green-main); margin-bottom:10px;">4to Año</h3>
+                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
+                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Tipo Homeschooling"</p>
                     <ul>
-                        <li>Tipo Homeschooling</li>
                         <li>Plataforma Interactiva</li>
                         <li>Maestro disponible</li>
-                        <li>Ceremonia de Graduación</li>
+                        <li>Graduaciones</li>
+                        <li>Flexibilidad de pago</li>
                     </ul>
-                    <div class="price-badge">Costo $225</div>
+                    <div class="price-badge">Costo Total $225</div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCbulGFXMGDnbY-1t7FSU_C9JFrW6ym3tFCsV6Wutro2l7_A/viewform" target="_blank" class="btn-solicitud">Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCbulGFXMGDnbY-1t7FSU_C9JFrW6ym3tFCsV6Wutro2l7_A/viewform" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
         </div>
 
-        <div class="card reveal" id="reposicion" style="margin-top: 30px; border-top-color: var(--green-main);">
-            <h2>Reposición</h2>
-            <p>Reposición de clases, grados, tutorías y electivas (Artes, Tecnología, Salud).</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="margin-top:20px;">Llenar Solicitud</a>
+        <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
+            <h2>Reposición y Servicios Adicionales</h2>
+            <p style="margin-bottom: 20px;">Restauramos el potencial académico con programas especializados y electivas variadas.</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <ul>
+                    <li>Reposición de Clases</li>
+                    <li>Reposición de Grado</li>
+                    <li>Tutorías Personalizadas</li>
+                    <li>Estudios Supervisados</li>
+                </ul>
+                <ul>
+                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
+                    <li>Educación Cristiana</li>
+                    <li>Artes y Salud</li>
+                    <li>Tecnología y más...</li>
+                </ul>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;">Llenar Solicitud de Reposición</a>
         </div>
 
         <div class="card reveal" id="contacto">
             <h2>Contacto</h2>
-            <ul class="contact-info">
-                <li>👤 <strong>Nombre:</strong> Carolie Zarate</li>
-                <li>📞 <strong>Cel:</strong> <a href="tel:+17872013642">(787)-201-3642</a></li>
-                <li>✉️ <strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
+            <ul class="contact-list">
+                <li><strong>Nombre:</strong> Carolie Zarate</li>
+                <li><strong>Cel:</strong> <a href="tel:+17872013642">(787)-201-3642</a></li>
+                <li><strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
         </div>
     </div>
 
+    <div style="text-align: center; padding: 20px; color: var(--text-gray); font-size: 0.9em;">
+        Avalados por El Shaddai Christian Academy | Acreditado por la NCAA
+    </div>
+
     <footer>
         <p><strong>INFINITY BRIDGE PROJECT</strong></p>
-        <p>Acreditado por la NCAA | El Shaddai Academy</p>
-        <p style="margin-top: 15px; font-size: 10px; opacity: 0.6;">RAYMOND DEVELOP © 2026</p>
+        <p style="margin-top: 20px; font-size: 10px; opacity: 0.6;">DESARROLLADO POR RAYMOND DEVELOP © 2026</p>
     </footer>
 
     <script>
         function createShootingStars() {
             const container = document.getElementById('starsContainer');
+            const starCount = 35; 
             const colors = ['ss-blue', 'ss-green', 'ss-orange', 'ss-red', 'ss-purple'];
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('shooting-star');
                 star.classList.add(colors[Math.floor(Math.random() * colors.length)]);
                 star.style.top = `${Math.random() * 80}vh`;
                 star.style.left = `${Math.random() * 100}vw`;
                 star.style.animationDelay = `${Math.random() * 20}s`;
-                star.style.animationDuration = `${12 + Math.random() * 10}s`; 
+                star.style.animationDuration = `${10 + Math.random() * 12}s`; 
                 container.appendChild(star);
             }
         }
         createShootingStars();
+
         function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
-            document.getElementById('navMenu').classList.toggle('active');
+            const btn = document.getElementById('mobileMenu');
+            const menu = document.getElementById('navMenu');
+            btn.classList.toggle('active');
+            menu.classList.toggle('active');
         }
-        function toggleFab() { document.getElementById('fabOptions').classList.toggle('active'); }
+
+        function toggleFab() {
+            document.getElementById('fabOptions').classList.toggle('active');
+        }
+
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
