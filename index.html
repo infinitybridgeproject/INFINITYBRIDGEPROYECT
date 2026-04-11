@@ -89,6 +89,16 @@
 
         header { background: transparent; padding: 120px 20px 60px 20px; text-align: center; }
         header img { max-width: 380px; height: auto; mix-blend-mode: multiply; }
+        
+        /* Estilo para el Slogan solicitado */
+        .header-slogan {
+            color: var(--blue-main);
+            font-weight: bold;
+            margin-top: 15px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s ease-out; }
@@ -124,7 +134,7 @@
         .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 12px rgba(28, 63, 148, 0.2); }
         .btn-solicitud:hover { background: var(--green-main); }
 
-        /* CONTACTO ESTILO LIMPIO - Raymond Develop */
+        /* CONTACTO ESTILO LIMPIO */
         .contact-list { list-style: none; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
         .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
@@ -170,6 +180,7 @@
 
     <header id="inicio">
         <img src="infinity.png" onerror="this.src='infinity.png.png'" alt="INFINITY BRIDGE PROJECT">
+        <p class="header-slogan">Donde tus metas no tienen límites y tu éxito es infinito.</p>
     </header>
 
     <div class="container">
