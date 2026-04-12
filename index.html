@@ -133,31 +133,51 @@
         .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 12px rgba(28, 63, 148, 0.2); }
         .btn-solicitud:hover { background: var(--green-main); }
 
-        /* --- GALERÍA ESTILO GRID --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .gallery-item {
-            width: 100%;
-            height: 200px;
-            background: #eee;
-            border-radius: 15px;
+        /* --- NUEVO CARRUSEL DE GALERÍA --- */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 20px auto;
             overflow: hidden;
-            border: 2px solid var(--white);
-            transition: 0.3s;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .gallery-item img {
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide {
+            min-width: 100%;
+            height: 450px;
+        }
+        .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.5s;
         }
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            pointer-events: none;
         }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--blue-main);
+            pointer-events: auto;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: var(--green-main); color: white; }
 
         .contact-list { list-style: none; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
@@ -223,7 +243,6 @@
             <div class="program-box reveal">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Somos facilitadores para padres homeschoolers..."</p>
                     <ul>
                         <li>Grados: Pre-K a 12mo</li>
                         <li>Plataforma Interactiva</li>
@@ -238,7 +257,6 @@
             <div class="program-box reveal">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Tipo Homeschooling"</p>
                     <ul>
                         <li>Plataforma Interactiva</li>
                         <li>Maestro disponible</li>
@@ -253,32 +271,34 @@
 
         <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
             <h2>Reposición y Servicios Adicionales</h2>
-            <p style="margin-bottom: 20px;">Restauramos el potencial académico con programas especializados y electivas variadas.</p>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <ul>
-                    <li>Reposición de Clases</li>
-                    <li>Reposición de Grado</li>
+                    <li>Reposición de Clases/Grado</li>
                     <li>Tutorías Personalizadas</li>
                     <li>Estudios Supervisados</li>
                 </ul>
                 <ul>
-                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
+                    <li style="color: var(--blue-main); font-weight: bold;">Electivas:</li>
                     <li>Educación Cristiana</li>
-                    <li>Artes y Salud</li>
-                    <li>Tecnología y más...</li>
+                    <li>Artes, Salud, Tecnología</li>
                 </ul>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;">Llenar Solicitud de Reposición</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 20px auto 0 auto;">Llenar Solicitud</a>
         </div>
 
         <div class="card reveal" id="galeria">
-            <h2>Galería de Actividades</h2>
-            <p>Momentos destacados de nuestros estudiantes y graduaciones.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="foto1.jpg" alt="Actividad 1" onerror="this.src='https://via.placeholder.com/400x300?text=Proximamente'"></div>
-                <div class="gallery-item"><img src="foto2.jpg" alt="Actividad 2" onerror="this.src='https://via.placeholder.com/400x300?text=Proximamente'"></div>
-                <div class="gallery-item"><img src="foto3.jpg" alt="Actividad 3" onerror="this.src='https://via.placeholder.com/400x300?text=Proximamente'"></div>
-                <div class="gallery-item"><img src="foto4.jpg" alt="Actividad 4" onerror="this.src='https://via.placeholder.com/400x300?text=Proximamente'"></div>
+            <h2>Galería de Graduaciones</h2>
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <div class="slide"><img src="Graduacion1.jpg" alt="Graduación 1"></div>
+                    <div class="slide"><img src="Graduacion2.jpg" alt="Graduación 2"></div>
+                    <div class="slide"><img src="Graduacion3.jpg" alt="Graduación 3"></div>
+                    <div class="slide"><img src="Graduacion4.jpg" alt="Graduación 4"></div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="prevSlide()">❮</button>
+                    <button class="nav-btn" onclick="nextSlide()">❯</button>
+                </div>
             </div>
         </div>
 
@@ -292,21 +312,31 @@
         </div>
     </div>
 
-    <div style="text-align: center; padding: 20px; color: var(--text-gray); font-size: 0.9em;">
-        Avalados por El Shaddai Christian Academy | Acreditado por la NCAA
-    </div>
-
     <footer>
         <p><strong>INFINITY BRIDGE PROJECT</strong></p>
         <p style="margin-top: 20px; font-size: 10px; opacity: 0.6;">DESARROLLADO POR RAYMOND DEVELOP © 2026</p>
     </footer>
 
     <script>
+        // Lógica del Carrusel
+        let currentSlide = 0;
+        function showSlide(index) {
+            const slides = document.getElementById('carouselSlides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        // Auto-play cada 5 segundos
+        setInterval(nextSlide, 5000);
+
         function createShootingStars() {
             const container = document.getElementById('starsContainer');
-            const starCount = 35; 
             const colors = ['ss-blue', 'ss-green', 'ss-orange', 'ss-red', 'ss-purple'];
-            for (let i = 0; i < starCount; i++) {
+            for (let i = 0; i < 35; i++) {
                 const star = document.createElement('div');
                 star.classList.add('shooting-star');
                 star.classList.add(colors[Math.floor(Math.random() * colors.length)]);
@@ -320,16 +350,10 @@
         createShootingStars();
 
         function toggleMenu() {
-            const btn = document.getElementById('mobileMenu');
-            const menu = document.getElementById('navMenu');
-            btn.classList.toggle('active');
-            menu.classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('navMenu').classList.toggle('active');
         }
-
-        function toggleFab() {
-            document.getElementById('fabOptions').classList.toggle('active');
-        }
-
+        function toggleFab() { document.getElementById('fabOptions').classList.toggle('active'); }
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
