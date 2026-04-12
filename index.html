@@ -90,7 +90,6 @@
         header { background: transparent; padding: 120px 20px 60px 20px; text-align: center; }
         header img { max-width: 380px; height: auto; mix-blend-mode: multiply; }
         
-        /* Estilo para el Slogan solicitado */
         .header-slogan {
             color: var(--blue-main);
             font-weight: bold;
@@ -134,7 +133,32 @@
         .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 12px rgba(28, 63, 148, 0.2); }
         .btn-solicitud:hover { background: var(--green-main); }
 
-        /* CONTACTO ESTILO LIMPIO */
+        /* --- GALERÍA ESTILO GRID --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--white);
+            transition: 0.3s;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
         .contact-list { list-style: none; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
         .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
@@ -165,7 +189,7 @@
             <li class="nav-item"><a href="#inicio" class="nav-link" onclick="toggleMenu()">Inicio</a></li>
             <li class="nav-item"><a href="#vision" class="nav-link" onclick="toggleMenu()">Visión</a></li>
             <li class="nav-item"><a href="#programas" class="nav-link" onclick="toggleMenu()">Programas</a></li>
-            <li class="nav-item"><a href="#reposicion" class="nav-link" onclick="toggleMenu()">Reposición</a></li>
+            <li class="nav-item"><a href="#galeria" class="nav-link" onclick="toggleMenu()">Galería</a></li>
             <li class="nav-item"><a href="#contacto" class="nav-link" onclick="toggleMenu()">Contacto</a></li>
         </ul>
     </nav>
@@ -191,21 +215,18 @@
             </div>
             <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
             <br>
-            <p><strong>Misión:</strong> Brindar educación accesible y de calidad basada en principios cristianos.</p>
+            <p><strong>Misión:</strong> Brindar educación accesible y de alta calidad técnica y espiritual para formar líderes con propósito.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Somos facilitadores para padres homeschoolers..."</p>
                     <ul>
                         <li>Grados: Pre-K a 12mo</li>
                         <li>Plataforma Interactiva</li>
                         <li>Maestros disponibles</li>
-                        <li>Entrega de notas trimestrales</li>
-                        <li>Graduaciones y Cuadro de Honor</li>
-                        <li>Salidas Grupales</li>
+                        <li>Notas y Cuadro de Honor</li>
                     </ul>
                     <div class="price-badge">Matrícula $75 | Mensualidad $50</div>
                 </div>
@@ -215,7 +236,6 @@
             <div class="program-box reveal">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; font-style: italic;">"Tipo Homeschooling"</p>
                     <ul>
                         <li>Plataforma Interactiva</li>
                         <li>Maestro disponible</li>
@@ -228,24 +248,15 @@
             </div>
         </div>
 
-        <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
-            <h2>Reposición y Servicios Adicionales</h2>
-            <p style="margin-bottom: 20px;">Restauramos el potencial académico con programas especializados y electivas variadas.</p>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <ul>
-                    <li>Reposición de Clases</li>
-                    <li>Reposición de Grado</li>
-                    <li>Tutorías Personalizadas</li>
-                    <li>Estudios Supervisados</li>
-                </ul>
-                <ul>
-                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
-                    <li>Educación Cristiana</li>
-                    <li>Artes y Salud</li>
-                    <li>Tecnología y más...</li>
-                </ul>
+        <div class="card reveal" id="galeria">
+            <h2>Galería de Actividades</h2>
+            <p>Momentos destacados de nuestros estudiantes y graduaciones.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="foto1.jpg" alt="Actividad 1" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><img src="foto2.jpg" alt="Actividad 2" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><img src="foto3.jpg" alt="Actividad 3" onerror="this.style.display='none'"></div>
+                <div class="gallery-item"><img src="foto4.jpg" alt="Actividad 4" onerror="this.style.display='none'"></div>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;">Llenar Solicitud de Reposición</a>
         </div>
 
         <div class="card reveal" id="contacto">
@@ -256,10 +267,6 @@
                 <li><strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
         </div>
-    </div>
-
-    <div style="text-align: center; padding: 20px; color: var(--text-gray); font-size: 0.9em;">
-        Avalados por El Shaddai Christian Academy | Acreditado por la NCAA
     </div>
 
     <footer>
