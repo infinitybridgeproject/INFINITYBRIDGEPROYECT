@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- FONDO DE ESTRELLAS FUGACES LENTAS --- */
+        /* --- FONDO DE ESTRELLAS FUGACES --- */
         .shooting-stars-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -56,7 +56,7 @@
             100% { transform: translateX(1000px) translateY(1000px) rotate(-45deg); opacity: 0; width: 150px; }
         }
 
-        /* --- NAV / MENU HAMBURGUESA --- */
+        /* --- NAV --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -81,7 +81,7 @@
         .menu-toggle.active .bar:nth-child(2) { opacity: 0; transform: translateX(-20px); }
         .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        .nav-menu { position: absolute; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); list-style: none; z-index: 1001; }
+        .nav-menu { position: absolute; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; list-style: none; z-index: 1001; }
         .nav-menu.active { right: 0; }
         .nav-item { margin: 20px 0; }
         .nav-link { text-decoration: none; color: var(--blue-main); font-weight: bold; font-size: 1.2rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
@@ -133,7 +133,7 @@
         .btn-solicitud { display: block; background: var(--blue-main); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 12px rgba(28, 63, 148, 0.2); }
         .btn-solicitud:hover { background: var(--green-main); }
 
-        /* --- NUEVO CARRUSEL DE GALERÍA --- */
+        /* --- CARRUSEL --- */
         .carousel-container {
             position: relative;
             max-width: 800px;
@@ -146,15 +146,8 @@
             display: flex;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .slide {
-            min-width: 100%;
-            height: 450px;
-        }
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .slide { min-width: 100%; height: 450px; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -177,7 +170,6 @@
             pointer-events: auto;
             transition: 0.3s;
         }
-        .nav-btn:hover { background: var(--green-main); color: white; }
 
         .contact-list { list-style: none; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
@@ -271,19 +263,22 @@
 
         <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
             <h2>Reposición y Servicios Adicionales</h2>
+            <p style="margin-bottom: 20px;">Restauramos el potencial académico con programas especializados y electivas variadas.</p>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <ul>
-                    <li>Reposición de Clases/Grado</li>
+                    <li>Reposición de Clases</li>
+                    <li>Reposición de Grado</li>
                     <li>Tutorías Personalizadas</li>
                     <li>Estudios Supervisados</li>
                 </ul>
                 <ul>
-                    <li style="color: var(--blue-main); font-weight: bold;">Electivas:</li>
+                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
                     <li>Educación Cristiana</li>
-                    <li>Artes, Salud, Tecnología</li>
+                    <li>Artes y Salud</li>
+                    <li>Tecnología y más...</li>
                 </ul>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 20px auto 0 auto;">Llenar Solicitud</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;">Llenar Solicitud</a>
         </div>
 
         <div class="card reveal" id="galeria">
@@ -298,6 +293,17 @@
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="prevSlide()">❮</button>
                     <button class="nav-btn" onclick="nextSlide()">❯</button>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <img src="shaddai.jpeg" style="max-height: 120px; mix-blend-mode: multiply;" alt="Aval El Shaddai">
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Avalados por El Shaddai Christian Academy</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="ncaa.jpeg" style="max-height: 100px; mix-blend-mode: multiply;" alt="Acreditado NCAA">
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Acreditado por la NCAA</p>
                 </div>
             </div>
         </div>
@@ -318,7 +324,6 @@
     </footer>
 
     <script>
-        // Lógica del Carrusel
         let currentSlide = 0;
         function showSlide(index) {
             const slides = document.getElementById('carouselSlides');
@@ -330,16 +335,14 @@
         }
         function nextSlide() { showSlide(currentSlide + 1); }
         function prevSlide() { showSlide(currentSlide - 1); }
-        // Auto-play cada 5 segundos
         setInterval(nextSlide, 5000);
 
         function createShootingStars() {
             const container = document.getElementById('starsContainer');
-            const colors = ['ss-blue', 'ss-green', 'ss-orange', 'ss-red', 'ss-purple'];
             for (let i = 0; i < 35; i++) {
                 const star = document.createElement('div');
                 star.classList.add('shooting-star');
-                star.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                star.classList.add(['ss-blue', 'ss-green', 'ss-orange', 'ss-red', 'ss-purple'][Math.floor(Math.random() * 5)]);
                 star.style.top = `${Math.random() * 80}vh`;
                 star.style.left = `${Math.random() * 100}vw`;
                 star.style.animationDelay = `${Math.random() * 20}s`;
@@ -348,7 +351,6 @@
             }
         }
         createShootingStars();
-
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
             document.getElementById('navMenu').classList.toggle('active');
@@ -358,8 +360,7 @@
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+                if (reveals[i].getBoundingClientRect().top < windowHeight - 100) reveals[i].classList.add("active");
             }
         }
         window.addEventListener("scroll", reveal);
