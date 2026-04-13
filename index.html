@@ -177,13 +177,13 @@
             100% { left: 150%; }
         }
 
-        /* --- CONTACTO ORIGINAL --- */
+        /* --- CONTACTO --- */
         .contact-list { list-style: none; margin-top: 20px; }
-        .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
+        .contact-list li { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-dark); }
         .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
         .contact-list a:hover { color: var(--green-main); }
 
-        /* --- MAPA PEQUEÑO --- */
+        /* --- MINI MAPA Y BOTÓN --- */
         .mini-map-container {
             margin-top: 25px;
             width: 100%;
@@ -191,26 +191,27 @@
         }
         .mini-map-box {
             width: 100%;
-            height: 150px;
+            height: 160px;
             border-radius: 15px;
             overflow: hidden;
             border: 2px solid white;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
             cursor: pointer;
         }
         .mini-map-box iframe { width: 100%; height: 100%; border: 0; }
+        
         .map-btn-small {
-            margin-top: 10px;
+            margin-top: 12px;
             display: inline-block;
             background: var(--blue-main);
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 14px;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
+            text-align: center;
         }
         .map-btn-small:hover { background: var(--green-main); }
 
@@ -387,15 +388,18 @@
             <h2>Contacto</h2>
             <ul class="contact-list">
                 <li><strong>Nombre:</strong> Carolie Zarate</li>
-                <li><strong>Cel:</strong> <a href="tel:+17872013642">(787)-201-3642</a></li>
+                <li><strong>Teléfonos:</strong> 
+                    <a href="tel:+17872013642">(787)-201-3642</a> | 
+                    <a href="tel:+17872241230">(787)-224-1230</a>
+                </li>
                 <li><strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
 
             <div class="mini-map-container">
-                <div class="mini-map-box" onclick="window.open('https://maps.google.com/?q=El+Shaddai+Christian+Academy+Dorado', '_blank')">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.564551722822!2d-66.2625!3d18.4611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c030ee6ee360909%3A0x18a8a8f28220348c!2sEl%20Shaddai%20Christian%20Academy!5e0!3m2!1ses!2spr!4v1712790000000!5m2!1ses!2spr" allowfullscreen="" loading="lazy"></iframe>
+                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=El+Shaddai+Christian+Academy+Dorado', '_blank')">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.0326442656366!2d-66.27303312384705!3d18.473138870344465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c030366ee360909%3A0x18a8a8f28220988c!2sEl%20Shaddai%20Christian%20Academy!5e0!3m2!1ses!2spr!4v1712790000000!5m2!1ses!2spr" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="https://maps.google.com/?q=El+Shaddai+Christian+Academy+Dorado" target="_blank" class="map-btn-small">Cómo llegar</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=El+Shaddai+Christian+Academy+Dorado" target="_blank" class="map-btn-small">Cómo llegar</a>
             </div>
         </div>
     </div>
