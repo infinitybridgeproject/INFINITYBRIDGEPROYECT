@@ -124,7 +124,7 @@
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
-        /* AJUSTE PARA POSICIONAR GIFS */
+        /* CONTENEDOR DE PROGRAMA CON POSICIÓN RELATIVA PARA EL GIF */
         .program-box { 
             background: #fff; 
             padding: 35px; 
@@ -134,19 +134,19 @@
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            position: relative; /* Necesario para el gif en la esquina */
+            position: relative; 
             overflow: hidden;
         }
         .program-box:hover { border-color: var(--green-main); transform: translateY(-10px); }
 
-        /* ESTILO PARA LOS GIFS ANIMADOS */
-        .program-gif {
+        /* ESTILO PARA LOS GIFS EN LA ESQUINA */
+        .corner-gif {
             position: absolute;
             top: 15px;
             right: 15px;
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
+            width: 45px;
+            height: 45px;
+            pointer-events: none;
             opacity: 0.8;
         }
 
@@ -338,12 +338,12 @@
             </div>
             <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
             <br>
-            <p><strong>Misión:</strong> Implementar una educación <strong>vanguardista</strong> y de excelencia fundamentada en principios cristianos. Nuestro propósito es guiar a cada estudiante a cruzar el puente hacia el conocimiento, inspirándoles a alcanzar su máximo potencial académico y espiritual en un entorno de fe y constante innovación.</p>
+            <p><strong>Misión:</strong> Implementar una educación <strong>vanguardista</strong> y de excelencia fundamentada en principios cristianos. Nuestro propósito es guiar con integridad a cada estudiante, fomentando su desarrollo integral para que alcancen su máximo potencial académico y espiritual, impactando positivamente su futuro.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
-                <img src="https://cdn.pixabay.com/animation/2023/04/10/16/06/16-06-44-644_512.gif" class="program-gif" alt="animacion">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3o7TKMGpxxca1uH6Ba/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
                     <ul>
@@ -365,11 +365,11 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
 
             <div class="program-box reveal">
-                <img src="https://cdn.pixabay.com/animation/2022/10/11/03/41/03-41-15-467_512.gif" class="program-gif" alt="animacion">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/l41lTfuxOSD81S3S0/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
                     <ul>
@@ -395,8 +395,7 @@
             </div>
         </div>
 
-        <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main); position: relative;">
-            <img src="https://cdn.pixabay.com/animation/2023/06/13/15/13/15-13-17-474_512.gif" class="program-gif" style="top: 30px; right: 30px;" alt="animacion">
+        <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
             <h2>Reposición y Servicios Adicionales</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <ul>
@@ -454,10 +453,10 @@
             </ul>
 
             <div class="mini-map-container">
-                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps', '_blank')">
-                    <iframe src="about:blank" allowfullscreen="" loading="lazy"></iframe>
+                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps?q=18.3975,-66.2163', '_blank')">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15147.288229871587!2d-66.2163!3d18.3975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spr!4v1710000000000" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="#" target="_blank" class="map-btn-small">Cómo llegar</a>
+                <a href="https://www.google.com/maps?q=18.3975,-66.2163" target="_blank" class="map-btn-small">Cómo llegar</a>
             </div>
         </div>
     </div>
