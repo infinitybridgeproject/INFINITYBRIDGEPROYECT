@@ -131,7 +131,6 @@
 
         .price-badge { display: block; background: #f8fafc; color: var(--blue-main); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px; text-align: center; border-left: 4px solid var(--green-main); }
 
-        /* --- ESTILO MÉTODOS DE PAGO --- */
         .payment-methods {
             background: #fffbe6;
             border: 1px dashed #ffe58f;
@@ -144,7 +143,6 @@
         .payment-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         .tag { background: white; padding: 4px 10px; border-radius: 6px; border: 1px solid #eee; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
 
-        /* --- BOTONES CON EFECTO GLAZE CONSTANTE --- */
         .btn-solicitud {
             position: relative;
             display: block;
@@ -191,45 +189,26 @@
             100% { left: 150%; }
         }
 
-        /* --- CONTACTO --- */
         .contact-list { list-style: none; margin-top: 20px; padding: 0; }
         .contact-list li::before { content: "" !important; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
         .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
         .contact-list a:hover { color: var(--green-main); }
 
-        /* --- MAPA PEQUEÑO --- */
-        .mini-map-container {
-            margin-top: 25px;
-            width: 100%;
-            max-width: 400px;
-        }
-        .mini-map-box {
-            width: 100%;
-            height: 150px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
-            cursor: pointer;
-        }
-        .mini-map-box iframe { width: 100%; height: 100%; border: 0; }
         .map-btn-small {
-            margin-top: 10px;
+            margin-top: 20px;
             display: inline-block;
             background: var(--blue-main);
             color: white;
-            padding: 8px 15px;
+            padding: 12px 25px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 14px;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
         }
         .map-btn-small:hover { background: var(--green-main); }
 
-        /* --- CARRUSEL --- */
         .carousel-container {
             position: relative;
             max-width: 800px;
@@ -431,12 +410,7 @@
                 <li><strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
 
-            <div class="mini-map-container">
-                <div class="mini-map-box" onclick="window.open('https://maps.app.goo.gl/WQCuuKehDWCjdMFA9', '_blank')">
-                    <iframe src="https://maps.app.goo.gl/WQCuuKehDWCjdMFA9" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <a href="https://maps.app.goo.gl/WQCuuKehDWCjdMFA9" target="_blank" class="map-btn-small">Cómo llegar</a>
-            </div>
+            <a href="https://maps.app.goo.gl/WQCuuKehDWCjdMFA9" target="_blank" class="map-btn-small">Cómo llegar</a>
         </div>
     </div>
 
