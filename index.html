@@ -123,32 +123,8 @@
         h2::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        
-        /* CONTENEDOR DE PROGRAMA CON POSICIÓN RELATIVA PARA EL GIF */
-        .program-box { 
-            background: #fff; 
-            padding: 35px; 
-            border-radius: 20px; 
-            border: 1px solid #edf2f7; 
-            transition: 0.3s; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            position: relative; 
-            overflow: hidden;
-        }
+        .program-box { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid #edf2f7; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
         .program-box:hover { border-color: var(--green-main); transform: translateY(-10px); }
-
-        /* ESTILO PARA LOS GIFS EN LA ESQUINA */
-        .corner-gif {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 45px;
-            height: 45px;
-            pointer-events: none;
-            opacity: 0.8;
-        }
 
         .program-box ul, #reposicion ul { list-style: none; margin-bottom: 20px; }
         .program-box ul li::before, #reposicion ul li::before { content: "✓ "; color: var(--green-main); font-weight: bold; }
@@ -338,12 +314,11 @@
             </div>
             <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
             <br>
-            <p><strong>Misión:</strong> Implementar una educación <strong>vanguardista</strong> y de excelencia fundamentada en principios cristianos. Nuestro propósito es guiar con integridad a cada estudiante, fomentando su desarrollo integral para que alcancen su máximo potencial académico y espiritual, impactando positivamente su futuro.</p>
+            <p><strong>Misión:</strong> Brindar una educación vanguardista de excelencia fundamentada en principios cristianos, transformando el presente de nuestros estudiantes para asegurarles un propósito de éxito en su futuro académico y espiritual.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3o7TKMGpxxca1uH6Ba/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
                     <ul>
@@ -369,7 +344,6 @@
             </div>
 
             <div class="program-box reveal">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/l41lTfuxOSD81S3S0/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
                     <ul>
@@ -453,10 +427,10 @@
             </ul>
 
             <div class="mini-map-container">
-                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps?q=18.3975,-66.2163', '_blank')">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15147.288229871587!2d-66.2163!3d18.3975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spr!4v1710000000000" allowfullscreen="" loading="lazy"></iframe>
+                <div class="mini-map-box" onclick="window.open('https://maps.google.com/maps?q=18.3970,-66.3308', '_blank')">
+                    <iframe src="https://maps.google.com/maps?q=18.3970,-66.3308&hl=es&z=14&output=embed" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="https://www.google.com/maps?q=18.3975,-66.2163" target="_blank" class="map-btn-small">Cómo llegar</a>
+                <a href="https://maps.google.com/maps?q=18.3970,-66.3308" target="_blank" class="map-btn-small">Cómo llegar</a>
             </div>
         </div>
     </div>
