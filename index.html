@@ -84,6 +84,7 @@
         .nav-menu { position: absolute; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); list-style: none; z-index: 1001; }
         .nav-menu.active { right: 0; }
         .nav-item { margin: 20px 0; }
+        /* ELIMINACIÓN DE CHECK MARKS EN MENÚ */
         .nav-menu li::before { content: "" !important; } 
         .nav-link { text-decoration: none; color: var(--blue-main); font-weight: bold; font-size: 1.2rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover { color: var(--green-main); }
@@ -123,38 +124,15 @@
         h2::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        
-        /* CONTENEDOR DE PROGRAMA CON POSICIÓN RELATIVA PARA EL GIF */
-        .program-box { 
-            background: #fff; 
-            padding: 35px; 
-            border-radius: 20px; 
-            border: 1px solid #edf2f7; 
-            transition: 0.3s; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            position: relative; 
-            overflow: hidden;
-        }
+        .program-box { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid #edf2f7; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
         .program-box:hover { border-color: var(--green-main); transform: translateY(-10px); }
-
-        /* ESTILO PARA LOS GIFS EN LA ESQUINA */
-        .corner-gif {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 45px;
-            height: 45px;
-            pointer-events: none;
-            opacity: 0.8;
-        }
 
         .program-box ul, #reposicion ul { list-style: none; margin-bottom: 20px; }
         .program-box ul li::before, #reposicion ul li::before { content: "✓ "; color: var(--green-main); font-weight: bold; }
 
         .price-badge { display: block; background: #f8fafc; color: var(--blue-main); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px; text-align: center; border-left: 4px solid var(--green-main); }
 
+        /* --- ESTILO MÉTODOS DE PAGO --- */
         .payment-methods {
             background: #fffbe6;
             border: 1px dashed #ffe58f;
@@ -167,6 +145,7 @@
         .payment-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         .tag { background: white; padding: 4px 10px; border-radius: 6px; border: 1px solid #eee; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
 
+        /* --- BOTONES CON EFECTO GLAZE CONSTANTE --- */
         .btn-solicitud {
             position: relative;
             display: block;
@@ -213,12 +192,14 @@
             100% { left: 150%; }
         }
 
+        /* --- CONTACTO --- */
         .contact-list { list-style: none; margin-top: 20px; padding: 0; }
         .contact-list li::before { content: "" !important; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
         .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
         .contact-list a:hover { color: var(--green-main); }
 
+        /* --- MAPA PEQUEÑO --- */
         .mini-map-container {
             margin-top: 25px;
             width: 100%;
@@ -249,6 +230,7 @@
         }
         .map-btn-small:hover { background: var(--green-main); }
 
+        /* --- CARRUSEL --- */
         .carousel-container {
             position: relative;
             max-width: 800px;
@@ -326,7 +308,7 @@
     </div>
 
     <header id="inicio">
-        <img src="infinity.png" onerror="this.src='infinity.png'" alt="INFINITY BRIDGE PROJECT">
+        <img src="infinity.png" onerror="this.src='infinity.png.png'" alt="INFINITY BRIDGE PROJECT">
         <p class="header-slogan">Donde tus metas no tienen límites y tu éxito es infinito.</p>
     </header>
 
@@ -338,12 +320,11 @@
             </div>
             <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
             <br>
-            <p><strong>Misión:</strong> Implementar una educación <strong>vanguardista</strong> y de excelencia fundamentada en principios cristianos. Nuestro propósito es guiar con integridad a cada estudiante, fomentando su desarrollo integral para que alcancen su máximo potencial académico y espiritual, impactando positivamente su futuro.</p>
+            <p><strong>Misión:</strong> Brindar una educación de excelencia fundamentada en principios cristianos, fomentando el desarrollo integral de nuestros estudiantes para que alcancen su máximo potencial académico y espiritual.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3o7TKMGpxxca1uH6Ba/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
                     <ul>
@@ -369,7 +350,6 @@
             </div>
 
             <div class="program-box reveal">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJibXQ0Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4Z3J4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/l41lTfuxOSD81S3S0/giphy.gif" class="corner-gif" alt="icon">
                 <div>
                     <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
                     <ul>
@@ -453,10 +433,10 @@
             </ul>
 
             <div class="mini-map-container">
-                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps?q=18.3975,-66.2163', '_blank')">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15147.288229871587!2d-66.2163!3d18.3975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spr!4v1710000000000" allowfullscreen="" loading="lazy"></iframe>
+                <div class="mini-map-box" onclick="window.open('https://www.google.com/maps/dir//El+Shaddai+Christian+Academy/@18.4239857,-66.2891334,17z/', '_blank')">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.3477146566814!2d-66.29170832386266!3d18.423985682651474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c031366ee360909%3A0x18a868f28220d38c!2sEl%20Shaddai%20Christian%20Academy!5e0!3m2!1ses-419!2spr!4v1712771234567!5m2!1ses-419!2spr" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <a href="https://www.google.com/maps?q=18.3975,-66.2163" target="_blank" class="map-btn-small">Cómo llegar</a>
+                <a href="https://www.google.com/maps/dir//El+Shaddai+Christian+Academy/@18.4239857,-66.2891334,17z/" target="_blank" class="map-btn-small">Cómo llegar</a>
             </div>
         </div>
     </div>
