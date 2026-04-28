@@ -6,16 +6,16 @@
     
     <link rel="icon" type="image/png" href="infinity.png">
     
-    <title>Infinity Bridge Project | Homeschooling y 4to Año en Puerto Rico</title>
-    <meta name="description" content="Centro educativo cristiano en Dorado, Puerto Rico. Especialistas en Homeschooling, 4to Año acelerado y tutorías con acreditación NCAA y aval El Shaddai.">
+    <title>Infinity Bridge Project | Educación Cristiana y Homeschooling en Puerto Rico</title>
+    <meta name="description" content="Infinity Bridge Project ofrece programas de Homeschooling y 4to Año acelerado en Puerto Rico. Educación vanguardista con principios cristianos y acreditación NCAA.">
     <meta name="keywords" content="Homeschooling Puerto Rico, 4to año acelerado, educación cristiana, Infinity Bridge Project, Dorado, Carolie Zarate, Geo Dev">
     <meta name="author" content="Geo Dev">
     <meta name="robots" content="index, follow">
 
     <meta property="og:title" content="Infinity Bridge Project | Educación Vanguardista Cristiana">
-    <meta property="og:description" content="Programas educativos de Pre-K a 12mo y 4to Año acelerado en Dorado. ¡Tu éxito es infinito!">
+    <meta property="og:description" content="Programas educativos flexibles de Pre-K a 12mo y graduación de cuarto año. ¡Tu éxito es infinito!">
     <meta property="og:image" content="infinity.png">
-    <meta property="og:url" content="https://infinitybridgeproject.com/">
+    <meta property="og:url" content="https://infinitybridgeproject.com">
     <meta property="og:type" content="website">
 
     <script type="application/ld+json">
@@ -61,6 +61,7 @@
             overflow-x: hidden;
         }
 
+        /* SEO: Ocultar H1 visualmente pero mantenerlo para buscadores */
         .hidden-h1 {
             position: absolute;
             width: 1px;
@@ -72,7 +73,7 @@
             border: 0;
         }
 
-        /* FONDO DE ESTRELLAS FUGACES */
+        /* --- FONDO DE ESTRELLAS FUGACES --- */
         .shooting-stars-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -103,6 +104,7 @@
             100% { transform: translateX(1000px) translateY(1000px) rotate(-45deg); opacity: 0; width: 150px; }
         }
 
+        /* --- NAV --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -135,14 +137,31 @@
 
         header { background: transparent; padding: 120px 20px 60px 20px; text-align: center; }
         header img { max-width: 380px; height: auto; mix-blend-mode: multiply; }
-        .header-slogan { color: var(--blue-main); font-weight: bold; margin-top: 15px; font-style: italic; letter-spacing: 0.5px; font-size: 1.1rem; }
+        
+        .header-slogan {
+            color: var(--blue-main);
+            font-weight: bold;
+            margin-top: 15px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         .card { background: rgba(255, 255, 255, 0.96); padding: 50px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); margin-bottom: 40px; border-top: 6px solid var(--blue-main); }
-        .title-stacked { color: var(--blue-main); margin-bottom: 25px; font-size: 30px; text-transform: uppercase; display: flex; flex-direction: column; line-height: 1.2; }
+        
+        .title-stacked { 
+            color: var(--blue-main); 
+            margin-bottom: 25px; 
+            font-size: 30px; 
+            text-transform: uppercase; 
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
         .title-stacked span { font-size: 0.6em; color: var(--text-gray); letter-spacing: 4px; }
         .title-stacked .main-title { display: flex; align-items: center; gap: 15px; }
         .title-stacked .main-title::after { content: ""; flex: 1; height: 3px; background: linear-gradient(to right, var(--green-main), transparent); }
@@ -159,7 +178,14 @@
 
         .price-badge { display: block; background: #f8fafc; color: var(--blue-main); padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 15px; text-align: center; border-left: 4px solid var(--green-main); }
 
-        .payment-methods { background: #fffbe6; border: 1px dashed #ffe58f; padding: 12px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
+        .payment-methods {
+            background: #fffbe6;
+            border: 1px dashed #ffe58f;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
         .payment-methods strong { color: #856404; display: block; margin-bottom: 8px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
         .payment-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         .tag { background: white; padding: 4px 10px; border-radius: 6px; border: 1px solid #eee; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
@@ -180,7 +206,11 @@
             z-index: 1;
         }
 
-        .btn-solicitud:hover { background: var(--green-main); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(109, 179, 63, 0.4); }
+        .btn-solicitud:hover {
+            background: var(--green-main);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(109, 179, 63, 0.4);
+        }
 
         .btn-solicitud::before {
             content: "";
@@ -189,7 +219,12 @@
             left: -150%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
             transform: skewX(-25deg);
             z-index: 2;
             animation: glaze-constant 3s infinite linear;
@@ -202,8 +237,9 @@
         }
 
         .contact-list { list-style: none; margin-top: 20px; padding: 0; }
+        .contact-list li::before { content: "" !important; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
-        .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .contact-list a { color: var(--blue-main); text-decoration: none; font-weight: bold; word-break: break-all; transition: 0.3s; }
         .contact-list a:hover { color: var(--green-main); }
 
         .map-btn-small {
@@ -220,12 +256,42 @@
         }
         .map-btn-small:hover { background: var(--green-main); }
 
-        .carousel-container { position: relative; max-width: 800px; margin: 20px auto; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .carousel-slides { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
         .slide { min-width: 100%; height: 450px; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
-        .carousel-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 15px; pointer-events: none; }
-        .nav-btn { background: rgba(255, 255, 255, 0.7); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: var(--blue-main); pointer-events: auto; transition: 0.3s; font-weight: bold; }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 15px;
+            pointer-events: none;
+        }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--blue-main);
+            pointer-events: auto;
+            transition: 0.3s;
+        }
 
         .fab-wrapper { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
         .fab-main { width: 60px; height: 60px; background: var(--green-main); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 28px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); animation: pulse 2s infinite; }
@@ -268,7 +334,7 @@
     </div>
 
     <header id="inicio">
-        <img src="infinity.png" alt="Logo Oficial Infinity Bridge Project - Educación Vanguardista Cristiana">
+        <img src="infinity.png" onerror="this.src='infinity.png'" alt="Logo Oficial Infinity Bridge Project - Educación Vanguardista Cristiana">
         <p class="header-slogan">Donde tus metas no tienen límites y tu éxito es infinito.</p>
     </header>
 
@@ -286,7 +352,7 @@
         <div class="grid" id="programas">
             <div class="program-box reveal">
                 <div>
-                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
+                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling en Puerto Rico</h3>
                     <ul>
                         <li>Grados: Pre-K a 12mo</li>
                         <li>Plataforma Interactiva</li>
@@ -294,14 +360,19 @@
                         <li>Notas y Cuadro de Honor</li>
                     </ul>
                     <div class="price-badge">Matrícula $75 | Mensualidad $50</div>
+
                     <div class="payment-methods">
                         <strong>Métodos de Pago:</strong>
                         <div class="payment-tags">
-                            <span class="tag">Efectivo</span><span class="tag">ATH Móvil</span><span class="tag">CashApp</span><span class="tag">Zelle</span><span class="tag">PayPal</span>
+                            <span class="tag">Efectivo</span>
+                            <span class="tag">ATH Móvil</span>
+                            <span class="tag">CashApp</span>
+                            <span class="tag">Zelle</span>
+                            <span class="tag">PayPal</span>
                         </div>
                     </div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
 
             <div class="program-box reveal">
@@ -314,10 +385,15 @@
                         <li>Flexibilidad de pago</li>
                     </ul>
                     <div class="price-badge">Costo Total $225</div>
+
                     <div class="payment-methods">
                         <strong>Métodos de Pago:</strong>
                         <div class="payment-tags">
-                            <span class="tag">Efectivo</span><span class="tag">ATH Móvil</span><span class="tag">CashApp</span><span class="tag">Zelle</span><span class="tag">PayPal</span>
+                            <span class="tag">Efectivo</span>
+                            <span class="tag">ATH Móvil</span>
+                            <span class="tag">CashApp</span>
+                            <span class="tag">Zelle</span>
+                            <span class="tag">PayPal</span>
                         </div>
                     </div>
                 </div>
@@ -329,12 +405,13 @@
             <h2>Reposición de Clases y Tutorías</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <ul>
-                    <li>Reposición de Clases/Grado</li>
+                    <li>Reposición de Clases</li>
+                    <li>Reposición de Grado</li>
                     <li>Tutorías Personalizadas</li>
                     <li>Estudios Supervisados</li>
                 </ul>
                 <ul>
-                    <li style="color: var(--blue-main); font-weight: bold;">Electivas:</li>
+                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
                     <li>Educación Cristiana</li>
                     <li>Artes y Salud</li>
                     <li>Tecnología y más...</li>
@@ -344,27 +421,28 @@
         </div>
 
         <div class="card reveal" id="galeria">
-            <h2>Galería de Graduaciones</h2>
+            <h2>Galería de Graduaciones y Éxitos</h2>
             <div class="carousel-container">
                 <div class="carousel-slides" id="carouselSlides">
-                    <div class="slide"><img src="Graduacion1.jpg" alt="Graduación - Infinity Bridge Project"></div>
-                    <div class="slide"><img src="Graduacion2.jpg" alt="Diplomas Homeschooling"></div>
-                    <div class="slide"><img src="Graduacion3.jpg" alt="Ceremonia Cristiana"></div>
-                    <div class="slide"><img src="Graduacion4.jpg" alt="Éxito Académico"></div>
+                    <div class="slide"><img src="Graduacion1.jpg" alt="Graduación de Cuarto Año - Infinity Bridge Project en Puerto Rico"></div>
+                    <div class="slide"><img src="Graduacion2.jpg" alt="Entrega de Diplomas Homeschooling interactivo"></div>
+                    <div class="slide"><img src="Graduacion3.jpg" alt="Ceremonia de Graduación con valores cristianos"></div>
+                    <div class="slide"><img src="Graduacion4.jpg" alt="Estudiantes exitosos graduados de cuarto año acelerado"></div>
                 </div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="prevSlide()">❮</button>
                     <button class="nav-btn" onclick="nextSlide()">❯</button>
                 </div>
             </div>
+
             <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
                 <div style="text-align: center;">
-                    <img src="shaddai.jpeg" style="max-height: 120px; mix-blend-mode: multiply;" alt="Aval Shaddai">
-                    <p style="font-size: 12px; color: var(--text-gray);">Avalados por El Shaddai Christian Academy</p>
+                    <img src="shaddai.jpeg" style="max-height: 120px; mix-blend-mode: multiply;" alt="Aval Oficial El Shaddai Christian Academy">
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Avalados por El Shaddai Christian Academy</p>
                 </div>
                 <div style="text-align: center;">
-                    <img src="ncaa.jpeg" style="max-height: 100px; mix-blend-mode: multiply;" alt="Acreditación NCAA">
-                    <p style="font-size: 12px; color: var(--text-gray);">Acreditado por la NCAA</p>
+                    <img src="ncaa.jpeg" style="max-height: 100px; mix-blend-mode: multiply;" alt="Acreditación Deportiva NCAA">
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Acreditado por la NCAA</p>
                 </div>
             </div>
         </div>
@@ -377,7 +455,7 @@
                     <a href="tel:+17872013642">(787)-201-3642</a> | 
                     <a href="tel:+17872241230">(787)-224-1230</a>
                 </li>
-                <li><strong>Email:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
+                <li><strong>Email Oficial:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
             <a href="https://www.google.com/maps/search/?api=1&query=Infinity+Bridge+Project+Dorado" target="_blank" class="map-btn-small" rel="noopener">Cómo llegar a nuestra sede</a>
         </div>
@@ -385,16 +463,39 @@
 
     <footer style="background-color: var(--blue-main); color: var(--white); padding: 80px 20px 40px 20px; margin-top: 100px; border-top: 8px solid var(--green-main);">
         <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            
             <div>
                 <h3 style="margin-bottom: 20px; font-size: 1.5rem; text-transform: uppercase;">
                     <span style="color: var(--white);">Infinity</span> <span style="color: var(--green-main);">Bridge</span>
                 </h3>
-                <p style="opacity: 0.8; font-size: 0.95rem;">Excelencia académica y espiritual en Puerto Rico.</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; line-height: 1.8;">
+                    Comprometidos con la excelencia académica y espiritual de cada estudiante en Puerto Rico, brindando herramientas vanguardistas para el éxito integral.
+                </p>
             </div>
+
+            <div>
+                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; border-bottom: 2px solid var(--green-main); display: inline-block; padding-bottom: 5px;">Navegación</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><a href="#inicio" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Inicio</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#programas" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Programas Académicos</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#galeria" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Galería de Logros</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#contacto" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Contacto</a></li>
+                </ul>
+            </div>
+
             <div style="text-align: right;">
-                <p style="font-size: 13px; opacity: 0.7;">© 2026 Infinity Bridge Project. Todos los derechos reservados.</p>
-                <p style="margin-top: 15px; font-size: 10px; letter-spacing: 3px; opacity: 0.6; text-transform: uppercase;">Design by <strong>Geo Dev</strong></p>
+                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; color: var(--green-main);">Tu Futuro es Hoy</h4>
+                <p style="font-style: italic; opacity: 0.9; line-height: 1.6;">
+                    "Educación que trasciende fronteras y construye puentes infinitos hacia el propósito."
+                </p>
             </div>
+        </div>
+
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+            <p style="font-size: 13px; opacity: 0.7;">© 2026 Infinity Bridge Project. Todos los derechos reservados.</p>
+            <p style="margin-top: 15px; font-size: 10px; letter-spacing: 3px; opacity: 0.6; text-transform: uppercase;">
+                Design by <strong style="color: var(--green-main); font-weight: 800;">Geo Dev</strong>
+            </p>
         </div>
     </footer>
 
@@ -421,7 +522,7 @@
                 star.style.top = `${Math.random() * 80}vh`;
                 star.style.left = `${Math.random() * 100}vw`;
                 star.style.animationDelay = `${Math.random() * 20}s`;
-                star.style.animationDuration = `${10 + Math.random() * 12}s`;
+                star.style.animationDuration = `${10 + Math.random() * 12}s`; 
                 container.appendChild(star);
             }
         }
