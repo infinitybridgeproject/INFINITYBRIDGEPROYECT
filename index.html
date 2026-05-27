@@ -115,49 +115,162 @@
         .nav-link:hover { color: var(--green-main); }
 
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1002;
+        .top-banner {
+            position: fixed;
+            top: 74px;
+            left: 0;
+            width: 100%;
+            z-index: 998;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--blue-main), var(--green-main), #1C3F94);
+            background-size: 220% 220%;
+            color: var(--white);
+            box-shadow: 0 12px 28px rgba(28,63,148,0.22);
+            animation: bannerGradient 7s ease infinite, bannerDrop 0.7s ease both;
+            overflow: hidden;
         }
 
-        .language-switch {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(28, 63, 148, 0.08);
-            border: 1px solid rgba(28, 63, 148, 0.12);
-            padding: 5px;
-            border-radius: 999px;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 8px 18px rgba(28,63,148,0.08);
+        .top-banner.hidden {
+            transform: translateY(-130%);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.45s ease;
         }
 
-        .lang-btn {
+        .top-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: translateX(-120%);
+            animation: bannerShine 4s ease-in-out infinite;
+        }
+
+        @keyframes bannerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes bannerDrop {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bannerShine {
+            0% { transform: translateX(-120%); }
+            45%, 100% { transform: translateX(120%); }
+        }
+
+        .top-banner-content {
             position: relative;
-            border: none;
-            background: transparent;
-            color: var(--blue-main);
-            font-weight: 800;
-            font-size: 0.78rem;
-            letter-spacing: 0.5px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
             z-index: 1;
         }
 
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--blue-main), var(--green-main));
-            color: var(--white);
-            box-shadow: 0 8px 18px rgba(28,63,148,0.18);
+        .top-banner-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-weight: 700;
         }
 
-        .lang-btn:hover { transform: translateY(-1px); }
+        .top-banner-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.32);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.78rem;
+            font-weight: 900;
+            animation: badgePulse 2.4s ease-in-out infinite;
+        }
 
-        header { background: transparent; padding: 120px 20px 60px 20px; text-align: center; }
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.35); }
+            50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+        }
+
+        .top-banner-message {
+            font-size: 0.98rem;
+            letter-spacing: 0.2px;
+        }
+
+        .top-banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .top-banner-btn,
+        .top-banner-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 850;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .top-banner-btn {
+            background: var(--white);
+            color: var(--blue-main);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .top-banner-whatsapp {
+            background: rgba(37, 211, 102, 0.95);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+        }
+
+        .top-banner-btn:hover,
+        .top-banner-whatsapp:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.03);
+        }
+
+        .top-banner-close {
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.16);
+            color: var(--white);
+            font-size: 1.15rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .top-banner-close:hover {
+            background: rgba(255,255,255,0.28);
+            transform: rotate(90deg) scale(1.04);
+        }
+
+        body.banner-closed header {
+            padding-top: 120px;
+        }
+
+        header { background: transparent; padding: 190px 20px 60px 20px; text-align: center; }
         header img { max-width: 380px; height: auto; mix-blend-mode: multiply; }
         
         .header-slogan {
@@ -278,118 +391,20 @@
         }
         .map-btn-small:hover { background: var(--green-main); }
 
-        .carousel-shell {
-            position: relative;
-            max-width: 920px;
-            margin: 25px auto 10px auto;
-            padding: 10px;
-            border-radius: 32px;
-            background: linear-gradient(135deg, rgba(28,63,148,0.95), rgba(109,179,63,0.95));
-            box-shadow: 0 25px 60px rgba(28,63,148,0.22), 0 8px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-
-        .carousel-shell::before {
-            content: "";
-            position: absolute;
-            inset: -40%;
-            background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 35%);
-            animation: carouselGlow 8s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes carouselGlow {
-            0% { transform: translateX(-20%) translateY(-10%) rotate(0deg); }
-            100% { transform: translateX(20%) translateY(10%) rotate(360deg); }
-        }
-
         .carousel-container {
             position: relative;
+            max-width: 800px;
+            margin: 20px auto;
             overflow: hidden;
-            border-radius: 24px;
-            background: #0f172a;
-            min-height: 460px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-
         .carousel-slides {
             display: flex;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .slide {
-            position: relative;
-            min-width: 100%;
-            height: 460px;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .slide::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(3, 7, 18, 0.72), rgba(3, 7, 18, 0.08) 50%, rgba(255,255,255,0.05));
-            z-index: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.08);
-            filter: saturate(1.05) contrast(1.03);
-            transition: transform 1.2s ease, filter 0.8s ease;
-        }
-
-        .slide.active img {
-            transform: scale(1);
-            filter: saturate(1.18) contrast(1.08);
-        }
-
-        .slide-caption {
-            position: absolute;
-            left: 28px;
-            right: 28px;
-            bottom: 28px;
-            color: white;
-            z-index: 2;
-            max-width: 620px;
-            transform: translateY(18px);
-            opacity: 0;
-            transition: all 0.55s ease;
-        }
-
-        .slide.active .slide-caption {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .slide-caption .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.16);
-            border: 1px solid rgba(255,255,255,0.24);
-            backdrop-filter: blur(10px);
-            padding: 7px 12px;
-            border-radius: 999px;
-            font-size: 0.76rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .slide-caption h3 {
-            font-size: clamp(1.45rem, 3vw, 2.25rem);
-            line-height: 1.1;
-            margin-bottom: 8px;
-            text-shadow: 0 8px 20px rgba(0,0,0,0.35);
-        }
-
-        .slide-caption p { opacity: 0.92; max-width: 560px; }
-
+        .slide { min-width: 100%; height: 450px; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -397,90 +412,20 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 18px;
+            padding: 0 15px;
             pointer-events: none;
-            z-index: 3;
         }
-
         .nav-btn {
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255,255,255,0.32);
-            backdrop-filter: blur(12px);
-            width: 48px;
-            height: 48px;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
-            color: white;
-            font-size: 1.2rem;
+            color: var(--blue-main);
             pointer-events: auto;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.32);
-            transform: scale(1.08);
-        }
-
-        .carousel-dots {
-            position: absolute;
-            left: 50%;
-            bottom: 16px;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 9px;
-            z-index: 4;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            border: none;
-            background: rgba(255,255,255,0.45);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            width: 34px;
-            background: white;
-        }
-
-        .carousel-progress {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 4px;
-            width: 100%;
-            background: rgba(255,255,255,0.18);
-            z-index: 5;
-        }
-
-        .carousel-progress span {
-            display: block;
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(to right, var(--green-main), white);
-        }
-
-        .carousel-progress span.animate { animation: progressFill 5s linear forwards; }
-        @keyframes progressFill { from { width: 0%; } to { width: 100%; } }
-
-        @media (max-width: 760px) {
-            nav { padding: 12px 15px; }
-            .nav-logo { font-size: 0.95rem; max-width: 150px; line-height: 1.1; }
-            .nav-actions { gap: 10px; }
-            .lang-btn { padding: 7px 9px; font-size: 0.72rem; }
-            .card { padding: 30px 22px; }
-            .grid { grid-template-columns: 1fr; }
-            .carousel-shell { border-radius: 24px; padding: 7px; }
-            .carousel-container, .slide { min-height: 360px; height: 360px; }
-            .slide-caption { left: 20px; right: 20px; bottom: 36px; }
-            .slide-caption p { font-size: 0.92rem; }
-            .nav-btn { width: 42px; height: 42px; }
-            h2, .title-stacked { font-size: 24px; }
+            transition: 0.3s;
         }
 
         .fab-wrapper { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; }
@@ -502,24 +447,33 @@
         <div class="nav-logo">
             <span class="logo-infinity">Infinity</span> <span class="logo-bridge">Bridge</span> <span class="logo-project">Project</span>
         </div>
-        <div class="nav-actions">
-            <div class="language-switch" aria-label="Selector de idioma">
-                <button class="lang-btn active" type="button" id="btnEsp" onclick="setLanguage('es')">ESP</button>
-                <button class="lang-btn" type="button" id="btnEng" onclick="setLanguage('en')">ENG</button>
-            </div>
-            <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()" aria-label="Abrir menú">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </div>
+        <div class="menu-toggle" id="mobileMenu" onclick="toggleMenu()">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
         <ul class="nav-menu" id="navMenu">
-            <li class="nav-item"><a href="#inicio" class="nav-link" onclick="toggleMenu()" data-i18n="navInicio" data-i18n="navInicio">Inicio</a></li>
-            <li class="nav-item"><a href="#vision" class="nav-link" onclick="toggleMenu()" data-i18n="navVision">Visión</a></li>
-            <li class="nav-item"><a href="#programas" class="nav-link" onclick="toggleMenu()" data-i18n="navProgramas">Programas</a></li>
-            <li class="nav-item"><a href="#reposicion" class="nav-link" onclick="toggleMenu()" data-i18n="navReposicion">Reposición</a></li>
-            <li class="nav-item"><a href="#galeria" class="nav-link" onclick="toggleMenu()" data-i18n="navGaleria">Galería</a></li>
-            <li class="nav-item"><a href="#contacto" class="nav-link" onclick="toggleMenu()" data-i18n="navContacto" data-i18n="navContacto">Contacto</a></li>
+            <li class="nav-item"><a href="#inicio" class="nav-link" onclick="toggleMenu()">Inicio</a></li>
+            <li class="nav-item"><a href="#vision" class="nav-link" onclick="toggleMenu()">Visión</a></li>
+            <li class="nav-item"><a href="#programas" class="nav-link" onclick="toggleMenu()">Programas</a></li>
+            <li class="nav-item"><a href="#reposicion" class="nav-link" onclick="toggleMenu()">Reposición</a></li>
+            <li class="nav-item"><a href="#galeria" class="nav-link" onclick="toggleMenu()">Galería</a></li>
+            <li class="nav-item"><a href="#contacto" class="nav-link" onclick="toggleMenu()">Contacto</a></li>
         </ul>
     </nav>
+
+
+    <div class="top-banner" id="topBanner">
+        <div class="top-banner-content">
+            <div class="top-banner-text">
+                <span class="top-banner-badge" data-i18n="openBadge">Matrícula 2026</span>
+                <span class="top-banner-message" data-i18n="openText">Ya está abierta. Espacios disponibles para Homeschooling y 4to Año.</span>
+            </div>
+            <div class="top-banner-actions">
+                <a href="#programas" class="top-banner-btn" data-i18n="openBtn">Ver Programas</a>
+                <a href="https://wa.me/17872013642?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20matr%C3%ADcula%202026%20de%20Infinity%20Bridge%20Project." target="_blank" rel="noopener" class="top-banner-whatsapp" data-i18n="openWhatsApp">WhatsApp</a>
+                <button class="top-banner-close" type="button" onclick="closeBanner()" aria-label="Cerrar anuncio">×</button>
+            </div>
+        </div>
+    </div>
 
     <div class="fab-wrapper">
         <div class="fab-options" id="fabOptions">
@@ -531,34 +485,34 @@
 
     <header id="inicio">
         <img src="infinity.png" onerror="this.src='infinity.png'" alt="Logo Oficial Infinity Bridge Project - Educación Vanguardista Cristiana">
-        <p class="header-slogan" data-i18n="slogan">Donde tus metas no tienen límites y tu éxito es infinito.</p>
+        <p class="header-slogan">Donde tus metas no tienen límites y tu éxito es infinito.</p>
     </header>
 
     <div class="container">
         <div class="card reveal" id="vision">
             <div class="title-stacked">
-                <span data-i18n="visionSmall">Nuestra</span>
-                <div class="main-title" data-i18n="visionTitle">Visión y Misión</div>
+                <span>Nuestra</span>
+                <div class="main-title">Visión y Misión</div>
             </div>
-            <p data-i18n-html="visionText"><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
+            <p><strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.</p>
             <br>
-            <p data-i18n-html="missionText"><strong>Misión:</strong> Brindar una educación vanguardista de excelencia fundamentada en principios cristianos, transformando el presente de nuestros estudiantes para asegurarles un propósito de éxito en su futuro académico y espiritual.</p>
+            <p><strong>Misión:</strong> Brindar una educación vanguardista de excelencia fundamentada en principios cristianos, transformando el presente de nuestros estudiantes para asegurarles un propósito de éxito en su futuro académico y espiritual.</p>
         </div>
 
         <div class="grid" id="programas">
             <div class="program-box reveal">
                 <div>
-                    <h3 style="color: var(--green-main); margin-bottom:15px;" data-i18n="programHomeTitle">Programa Homeschooling</h3>
+                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa Homeschooling</h3>
                     <ul>
-                        <li data-i18n="homeLi1">Grados: Pre-K a 12mo</li>
-                        <li data-i18n="homeLi2">Plataforma Interactiva</li>
-                        <li data-i18n="homeLi3">Maestros disponibles</li>
-                        <li data-i18n="homeLi4">Notas y Cuadro de Honor</li>
+                        <li>Grados: Pre-K a 12mo</li>
+                        <li>Plataforma Interactiva</li>
+                        <li>Maestros disponibles</li>
+                        <li>Notas y Cuadro de Honor</li>
                     </ul>
-                    <div class="price-badge" data-i18n="homePrice">Matrícula $75 | Mensualidad $50</div>
+                    <div class="price-badge">Matrícula $75 | Mensualidad $50</div>
 
                     <div class="payment-methods">
-                        <strong data-i18n="paymentMethods">Métodos de Pago:</strong>
+                        <strong>Métodos de Pago:</strong>
                         <div class="payment-tags">
                             <span class="tag">Efectivo</span>
                             <span class="tag">ATH Móvil</span>
@@ -568,22 +522,22 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud" data-i18n="applyBtn">Llenar Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
 
             <div class="program-box reveal">
                 <div>
-                    <h3 style="color: var(--green-main); margin-bottom:15px;" data-i18n="program4Title">Programa 4to Año</h3>
+                    <h3 style="color: var(--green-main); margin-bottom:15px;">Programa 4to Año</h3>
                     <ul>
-                        <li data-i18n="fourLi1">Plataforma Interactiva</li>
-                        <li data-i18n="fourLi2">Maestro disponible</li>
-                        <li data-i18n="fourLi3">Graduaciones</li>
-                        <li data-i18n="fourLi4">Flexibilidad de pago</li>
+                        <li>Plataforma Interactiva</li>
+                        <li>Maestro disponible</li>
+                        <li>Graduaciones</li>
+                        <li>Flexibilidad de pago</li>
                     </ul>
-                    <div class="price-badge" data-i18n="fourPrice">Costo Total $225</div>
+                    <div class="price-badge">Costo Total $225</div>
 
                     <div class="payment-methods">
-                        <strong data-i18n="paymentMethods">Métodos de Pago:</strong>
+                        <strong>Métodos de Pago:</strong>
                         <div class="payment-tags">
                             <span class="tag">Efectivo</span>
                             <span class="tag">ATH Móvil</span>
@@ -593,99 +547,67 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCbulGFXMGDnbY-1t7FSU_C9JFrW6ym3tFCsV6Wutro2l7_A/viewform" target="_blank" class="btn-solicitud" data-i18n="applyBtn">Llenar Solicitud</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCbulGFXMGDnbY-1t7FSU_C9JFrW6ym3tFCsV6Wutro2l7_A/viewform" target="_blank" class="btn-solicitud">Llenar Solicitud</a>
             </div>
         </div>
 
         <div class="card reveal" id="reposicion" style="margin-top: 40px; border-top-color: var(--green-main);">
-            <h2 data-i18n="reposicionTitle">Reposición y Servicios Adicionales</h2>
+            <h2>Reposición y Servicios Adicionales</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <ul>
-                    <li data-i18n="repLi1">Reposición de Clases</li>
-                    <li data-i18n="repLi2">Reposición de Grado</li>
-                    <li data-i18n="repLi3">Tutorías Personalizadas</li>
-                    <li data-i18n="repLi4">Estudios Supervisados</li>
+                    <li>Reposición de Clases</li>
+                    <li>Reposición de Grado</li>
+                    <li>Tutorías Personalizadas</li>
+                    <li>Estudios Supervisados</li>
                 </ul>
                 <ul>
-                    <li style="color: var(--blue-main); font-weight: bold;" data-i18n="electivasTitle">Electivas Disponibles:</li>
-                    <li data-i18n="elecLi1">Educación Cristiana</li>
-                    <li data-i18n="elecLi2">Artes y Salud</li>
-                    <li data-i18n="elecLi3">Tecnología y más...</li>
+                    <li style="color: var(--blue-main); font-weight: bold;">Electivas Disponibles:</li>
+                    <li>Educación Cristiana</li>
+                    <li>Artes y Salud</li>
+                    <li>Tecnología y más...</li>
                 </ul>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;" data-i18n="applyBtn">Llenar Solicitud</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHQ2mEwHwVXxta31sO4EYvi2oVAbjhqSJvFPkQyMjFg_2M6A/viewform" target="_blank" class="btn-solicitud" style="max-width: 400px; margin: 25px auto 0 auto;">Llenar Solicitud</a>
         </div>
 
         <div class="card reveal" id="galeria">
-            <h2 data-i18n="galleryTitle">Galería de Graduaciones</h2>
-            <div class="carousel-shell">
-                <div class="carousel-container" id="carouselContainer">
-                    <div class="carousel-slides" id="carouselSlides">
-                        <div class="slide active">
-                            <img src="Graduacion1.jpg" alt="Graduación de Cuarto Año - Infinity Bridge Project en Puerto Rico">
-                            <div class="slide-caption">
-                                <span class="eyebrow" data-i18n="slideEyebrow">Logros Infinity</span>
-                                <h3 data-i18n="slide1Title">Celebrando nuevas metas</h3>
-                                <p data-i18n="slide1Text">Cada graduación representa disciplina, propósito y una nueva etapa para nuestros estudiantes.</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="Graduacion2.jpg" alt="Entrega de Diplomas Homeschooling interactivo">
-                            <div class="slide-caption">
-                                <span class="eyebrow" data-i18n="slideEyebrow">Logros Infinity</span>
-                                <h3 data-i18n="slide2Title">Educación flexible</h3>
-                                <p data-i18n="slide2Text">Programas diseñados para avanzar con enfoque, apoyo y herramientas modernas.</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="Graduacion3.jpg" alt="Ceremonia de Graduación con valores cristianos">
-                            <div class="slide-caption">
-                                <span class="eyebrow" data-i18n="slideEyebrow">Logros Infinity</span>
-                                <h3 data-i18n="slide3Title">Valores que forman</h3>
-                                <p data-i18n="slide3Text">Una experiencia académica con principios cristianos y visión de futuro.</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="Graduacion4.jpg" alt="Estudiantes exitosos graduados de cuarto año acelerado">
-                            <div class="slide-caption">
-                                <span class="eyebrow" data-i18n="slideEyebrow">Logros Infinity</span>
-                                <h3 data-i18n="slide4Title">Tu éxito es infinito</h3>
-                                <p data-i18n="slide4Text">Acompañamos a cada estudiante a completar su meta con excelencia.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-nav">
-                        <button class="nav-btn" type="button" onclick="prevSlide()" aria-label="Imagen anterior">❮</button>
-                        <button class="nav-btn" type="button" onclick="nextSlide()" aria-label="Imagen siguiente">❯</button>
-                    </div>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <div class="carousel-progress"><span id="carouselProgress"></span></div>
+            <h2>Galería de Graduaciones</h2>
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <div class="slide"><img src="Graduacion1.jpg" alt="Graduación de Cuarto Año - Infinity Bridge Project en Puerto Rico"></div>
+                    <div class="slide"><img src="Graduacion2.jpg" alt="Entrega de Diplomas Homeschooling interactivo"></div>
+                    <div class="slide"><img src="Graduacion3.jpg" alt="Ceremonia de Graduación con valores cristianos"></div>
+                    <div class="slide"><img src="Graduacion4.jpg" alt="Estudiantes exitosos graduados de cuarto año acelerado"></div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="prevSlide()">❮</button>
+                    <button class="nav-btn" onclick="nextSlide()">❯</button>
                 </div>
             </div>
 
             <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
                 <div style="text-align: center;">
                     <img src="shaddai.jpeg" style="max-height: 120px; mix-blend-mode: multiply;" alt="Aval Oficial El Shaddai Christian Academy">
-                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;"><span data-i18n="avalText">Avalados por El Shaddai Christian Academy</span></p>
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Avalados por El Shaddai Christian Academy</p>
                 </div>
                 <div style="text-align: center;">
                     <img src="ncaa.jpeg" style="max-height: 100px; mix-blend-mode: multiply;" alt="Acreditación Deportiva NCAA">
-                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;"><span data-i18n="ncaaText">Acreditado por la NCAA</span></p>
+                    <p style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">Acreditado por la NCAA</p>
                 </div>
             </div>
         </div>
 
         <div class="card reveal" id="contacto">
-            <h2 data-i18n="contactTitle">Contacto en Dorado, Puerto Rico</h2>
+            <h2>Contacto en Dorado, Puerto Rico</h2>
             <ul class="contact-list">
-                <li><strong data-i18n="contactNameLabel">Nombre:</strong> Carolie Zarate</li>
-                <li><strong data-i18n="contactPhoneLabel">Teléfonos:</strong> 
+                <li><strong>Nombre:</strong> Carolie Zarate</li>
+                <li><strong>Teléfonos:</strong> 
                     <a href="tel:+17872013642">(787)-201-3642</a> | 
                     <a href="tel:+17872241230">(787)-224-1230</a>
                 </li>
-                <li><strong data-i18n="contactEmailLabel">Email Oficial:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
+                <li><strong>Email Oficial:</strong> <a href="mailto:infinitybridgeproyect@gmail.com">infinitybridgeproyect@gmail.com</a></li>
             </ul>
-            <a href="https://maps.app.goo.gl/WQCuuKehDWCjdMFA9" target="_blank" class="map-btn-small" rel="noopener" data-i18n="mapBtn">Cómo llegar a nuestra sede</a>
+            <a href="https://maps.app.goo.gl/WQCuuKehDWCjdMFA9" target="_blank" class="map-btn-small" rel="noopener">Cómo llegar a nuestra sede</a>
         </div>
     </div>
 
@@ -697,30 +619,30 @@
                     <span style="color: var(--white);">Infinity</span> <span style="color: var(--green-main);">Bridge</span>
                 </h3>
                 <p style="opacity: 0.8; font-size: 0.95rem; line-height: 1.8;">
-                    <span data-i18n="footerAbout">Comprometidos con la excelencia académica y espiritual de cada estudiante en Puerto Rico, brindando herramientas vanguardistas para el éxito integral.</span>
+                    Comprometidos con la excelencia académica y espiritual de cada estudiante en Puerto Rico, brindando herramientas vanguardistas para el éxito integral.
                 </p>
             </div>
 
             <div>
-                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; border-bottom: 2px solid var(--green-main); display: inline-block; padding-bottom: 5px;" data-i18n="footerNav">Navegación</h4>
+                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; border-bottom: 2px solid var(--green-main); display: inline-block; padding-bottom: 5px;">Navegación</h4>
                 <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 12px;"><a href="#inicio" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;" data-i18n="navInicio">Inicio</a></li>
-                    <li style="margin-bottom: 12px;"><a href="#programas" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;" data-i18n="footerPrograms">Programas Académicos</a></li>
-                    <li style="margin-bottom: 12px;"><a href="#galeria" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;" data-i18n="footerGallery">Galería de Logros</a></li>
-                    <li style="margin-bottom: 12px;"><a href="#contacto" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;" data-i18n="navContacto">Contacto</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#inicio" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Inicio</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#programas" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Programas Académicos</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#galeria" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Galería de Logros</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#contacto" style="color: var(--white); text-decoration: none; opacity: 0.8; transition: 0.3s;">Contacto</a></li>
                 </ul>
             </div>
 
             <div style="text-align: right;">
-                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; color: var(--green-main);" data-i18n="footerFuture">Tu Futuro es Hoy</h4>
+                <h4 style="margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; color: var(--green-main);">Tu Futuro es Hoy</h4>
                 <p style="font-style: italic; opacity: 0.9; line-height: 1.6;">
-                    <span data-i18n="footerQuote">"Educación que trasciende fronteras y construye puentes infinitos hacia el propósito."</span>
+                    "Educación que trasciende fronteras y construye puentes infinitos hacia el propósito."
                 </p>
             </div>
         </div>
 
         <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-            <p style="font-size: 13px; opacity: 0.7;"><span data-i18n="footerRights">© 2026 Infinity Bridge Project. Todos los derechos reservados.</span></p>
+            <p style="font-size: 13px; opacity: 0.7;">© 2026 Infinity Bridge Project. Todos los derechos reservados.</p>
             <p style="margin-top: 15px; font-size: 10px; letter-spacing: 3px; opacity: 0.6; text-transform: uppercase;">
                 Design by <strong style="color: var(--green-main); font-weight: 800;">Geo Dev</strong>
             </p>
@@ -728,145 +650,18 @@
     </footer>
 
     <script>
-        const translations = {
-            es: {
-                pageTitle: "Infinity Bridge Project | Educación Cristiana y Homeschooling en Puerto Rico",
-                navInicio: "Inicio", navVision: "Visión", navProgramas: "Programas", navReposicion: "Reposición", navGaleria: "Galería", navContacto: "Contacto",
-                slogan: "Donde tus metas no tienen límites y tu éxito es infinito.",
-                visionSmall: "Nuestra", visionTitle: "Visión y Misión",
-                visionText: "<strong>Visión:</strong> Ser una entidad educativa cristiana de excelencia, reconocida en Puerto Rico y los Estados Unidos por transformar vidas.",
-                missionText: "<strong>Misión:</strong> Brindar una educación vanguardista de excelencia fundamentada en principios cristianos, transformando el presente de nuestros estudiantes para asegurarles un propósito de éxito en su futuro académico y espiritual.",
-                programHomeTitle: "Programa Homeschooling", homeLi1: "Grados: Pre-K a 12mo", homeLi2: "Plataforma Interactiva", homeLi3: "Maestros disponibles", homeLi4: "Notas y Cuadro de Honor", homePrice: "Matrícula $75 | Mensualidad $50",
-                paymentMethods: "Métodos de Pago:", applyBtn: "Llenar Solicitud",
-                program4Title: "Programa 4to Año", fourLi1: "Plataforma Interactiva", fourLi2: "Maestro disponible", fourLi3: "Graduaciones", fourLi4: "Flexibilidad de pago", fourPrice: "Costo Total $225",
-                reposicionTitle: "Reposición y Servicios Adicionales", repLi1: "Reposición de Clases", repLi2: "Reposición de Grado", repLi3: "Tutorías Personalizadas", repLi4: "Estudios Supervisados",
-                electivasTitle: "Electivas Disponibles:", elecLi1: "Educación Cristiana", elecLi2: "Artes y Salud", elecLi3: "Tecnología y más...",
-                galleryTitle: "Galería de Graduaciones", slideEyebrow: "Logros Infinity", slide1Title: "Celebrando nuevas metas", slide1Text: "Cada graduación representa disciplina, propósito y una nueva etapa para nuestros estudiantes.", slide2Title: "Educación flexible", slide2Text: "Programas diseñados para avanzar con enfoque, apoyo y herramientas modernas.", slide3Title: "Valores que forman", slide3Text: "Una experiencia académica con principios cristianos y visión de futuro.", slide4Title: "Tu éxito es infinito", slide4Text: "Acompañamos a cada estudiante a completar su meta con excelencia.",
-                avalText: "Avalados por El Shaddai Christian Academy", ncaaText: "Acreditado por la NCAA",
-                contactTitle: "Contacto en Dorado, Puerto Rico", contactNameLabel: "Nombre:", contactPhoneLabel: "Teléfonos:", contactEmailLabel: "Email Oficial:", mapBtn: "Cómo llegar a nuestra sede",
-                footerAbout: "Comprometidos con la excelencia académica y espiritual de cada estudiante en Puerto Rico, brindando herramientas vanguardistas para el éxito integral.", footerNav: "Navegación", footerPrograms: "Programas Académicos", footerGallery: "Galería de Logros", footerFuture: "Tu Futuro es Hoy", footerQuote: "\"Educación que trasciende fronteras y construye puentes infinitos hacia el propósito.\"", footerRights: "© 2026 Infinity Bridge Project. Todos los derechos reservados."
-            },
-            en: {
-                pageTitle: "Infinity Bridge Project | Christian Education and Homeschooling in Puerto Rico",
-                navInicio: "Home", navVision: "Vision", navProgramas: "Programs", navReposicion: "Make-Up", navGaleria: "Gallery", navContacto: "Contact",
-                slogan: "Where your goals have no limits and your success is infinite.",
-                visionSmall: "Our", visionTitle: "Vision and Mission",
-                visionText: "<strong>Vision:</strong> To be a Christian educational institution of excellence, recognized in Puerto Rico and the United States for transforming lives.",
-                missionText: "<strong>Mission:</strong> To provide innovative, excellent education grounded in Christian principles, transforming our students’ present to guide them toward academic and spiritual success.",
-                programHomeTitle: "Homeschooling Program", homeLi1: "Grades: Pre-K to 12th", homeLi2: "Interactive Platform", homeLi3: "Teachers available", homeLi4: "Grades and Honor Roll", homePrice: "Enrollment $75 | Monthly $50",
-                paymentMethods: "Payment Methods:", applyBtn: "Fill Out Application",
-                program4Title: "12th Grade Program", fourLi1: "Interactive Platform", fourLi2: "Teacher available", fourLi3: "Graduations", fourLi4: "Flexible payment options", fourPrice: "Total Cost $225",
-                reposicionTitle: "Make-Up and Additional Services", repLi1: "Class Make-Up", repLi2: "Grade Make-Up", repLi3: "Personalized Tutoring", repLi4: "Supervised Studies",
-                electivasTitle: "Available Electives:", elecLi1: "Christian Education", elecLi2: "Arts and Health", elecLi3: "Technology and more...",
-                galleryTitle: "Graduation Gallery", slideEyebrow: "Infinity Achievements", slide1Title: "Celebrating new goals", slide1Text: "Every graduation represents discipline, purpose, and a new stage for our students.", slide2Title: "Flexible education", slide2Text: "Programs designed to help students move forward with focus, support, and modern tools.", slide3Title: "Values that shape lives", slide3Text: "An academic experience with Christian principles and a future-focused vision.", slide4Title: "Your success is infinite", slide4Text: "We support every student in completing their goal with excellence.",
-                avalText: "Endorsed by El Shaddai Christian Academy", ncaaText: "Accredited by the NCAA",
-                contactTitle: "Contact in Dorado, Puerto Rico", contactNameLabel: "Name:", contactPhoneLabel: "Phones:", contactEmailLabel: "Official Email:", mapBtn: "Get directions to our location",
-                footerAbout: "Committed to the academic and spiritual excellence of every student in Puerto Rico, providing innovative tools for integral success.", footerNav: "Navigation", footerPrograms: "Academic Programs", footerGallery: "Achievement Gallery", footerFuture: "Your Future Starts Today", footerQuote: "\"Education that transcends borders and builds infinite bridges toward purpose.\"", footerRights: "© 2026 Infinity Bridge Project. All rights reserved."
-            }
-        };
-
-        let currentLanguage = localStorage.getItem('infinityLanguage') || 'es';
         let currentSlide = 0;
-        let carouselTimer;
-
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('infinityLanguage', lang);
-            document.documentElement.lang = lang;
-            document.title = translations[lang].pageTitle;
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) el.textContent = translations[lang][key];
-            });
-
-            document.querySelectorAll('[data-i18n-html]').forEach(el => {
-                const key = el.getAttribute('data-i18n-html');
-                if (translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-
-            document.getElementById('btnEsp').classList.toggle('active', lang === 'es');
-            document.getElementById('btnEng').classList.toggle('active', lang === 'en');
-        }
-
-        function buildDots() {
-            const dotsContainer = document.getElementById('carouselDots');
-            const totalSlides = document.querySelectorAll('.slide').length;
-            dotsContainer.innerHTML = '';
-
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'dot';
-                dot.type = 'button';
-                dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
-                dot.addEventListener('click', () => showSlide(i));
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function restartProgress() {
-            const progress = document.getElementById('carouselProgress');
-            progress.classList.remove('animate');
-            void progress.offsetWidth;
-            progress.classList.add('animate');
-        }
-
         function showSlide(index) {
-            const slidesWrapper = document.getElementById('carouselSlides');
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const totalSlides = slides.length;
-
+            const slides = document.getElementById('carouselSlides');
+            const totalSlides = document.querySelectorAll('.slide').length;
             if (index >= totalSlides) currentSlide = 0;
             else if (index < 0) currentSlide = totalSlides - 1;
             else currentSlide = index;
-
-            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
-            restartProgress();
-            resetCarouselTimer();
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-
         function nextSlide() { showSlide(currentSlide + 1); }
         function prevSlide() { showSlide(currentSlide - 1); }
-
-        function resetCarouselTimer() {
-            clearInterval(carouselTimer);
-            carouselTimer = setInterval(() => {
-                const slides = document.querySelectorAll('.slide');
-                currentSlide = (currentSlide + 1) % slides.length;
-                const slidesWrapper = document.getElementById('carouselSlides');
-                const dots = document.querySelectorAll('.dot');
-                slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-                slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
-                restartProgress();
-            }, 5000);
-        }
-
-        function initCarouselTouch() {
-            const carousel = document.getElementById('carouselContainer');
-            let startX = 0;
-            let endX = 0;
-
-            carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            }, { passive: true });
-
-            carousel.addEventListener('touchmove', (e) => {
-                endX = e.touches[0].clientX;
-            }, { passive: true });
-
-            carousel.addEventListener('touchend', () => {
-                const distance = startX - endX;
-                if (Math.abs(distance) > 45) {
-                    distance > 0 ? nextSlide() : prevSlide();
-                }
-                startX = 0;
-                endX = 0;
-            });
-        }
+        setInterval(nextSlide, 5000);
 
         function createShootingStars() {
             const container = document.getElementById('starsContainer');
@@ -882,13 +677,28 @@
             }
         }
         createShootingStars();
-
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
             document.getElementById('navMenu').classList.toggle('active');
         }
-
         function toggleFab() { document.getElementById('fabOptions').classList.toggle('active'); }
+
+        function closeBanner() {
+            const banner = document.getElementById('topBanner');
+            if (banner) {
+                banner.classList.add('hidden');
+                document.body.classList.add('banner-closed');
+                localStorage.setItem('infinityBannerClosed', 'true');
+            }
+        }
+
+        function initBanner() {
+            const banner = document.getElementById('topBanner');
+            if (localStorage.getItem('infinityBannerClosed') === 'true') {
+                if (banner) banner.classList.add('hidden');
+                document.body.classList.add('banner-closed');
+            }
+        }
 
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
@@ -897,12 +707,8 @@
                 if (reveals[i].getBoundingClientRect().top < windowHeight - 100) reveals[i].classList.add("active");
             }
         }
-
         window.addEventListener("scroll", reveal);
-        buildDots();
-        setLanguage(currentLanguage);
-        showSlide(0);
-        initCarouselTouch();
+        initBanner();
         reveal();
     </script>
 </body>
