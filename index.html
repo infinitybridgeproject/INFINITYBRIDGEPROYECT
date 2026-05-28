@@ -623,6 +623,37 @@
         .carousel-progress span.animate { animation: progressFill 5s linear forwards; }
         @keyframes progressFill { from { width: 0%; } to { width: 100%; } }
 
+
+        .top-banner {
+            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease, filter 0.45s ease;
+            will-change: transform, opacity, filter;
+        }
+
+        .top-banner.banner-removing {
+            transform: translateY(-120%) scale(0.98);
+            opacity: 0;
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .top-banner-close {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-banner-close::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 65%);
+            transform: scale(0);
+            transition: transform 0.35s ease;
+        }
+
+        .top-banner-close:hover::before {
+            transform: scale(1.8);
+        }
+
         @media (max-width: 760px) {
             nav { padding: 12px 15px; }
             .nav-logo { font-size: 0.95rem; max-width: 150px; line-height: 1.1; }
@@ -726,6 +757,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="fab-wrapper">
         <div class="fab-options" id="fabOptions">
@@ -1097,21 +1129,17 @@
         }
 
         function toggleFab() { document.getElementById('fabOptions').classList.toggle('active'); }
-
-
-        function closeBanner() {
+function closeBanner() {
             const banner = document.getElementById('topBanner');
-            if (banner) banner.classList.add('hidden');
+            if (!banner) return;
+
+            banner.classList.add('banner-removing');
             document.body.classList.add('banner-closed');
-            localStorage.setItem('infinityBannerClosed', 'true');
-        }
 
-        function initBanner() {
-            const banner = document.getElementById('topBanner');
-            if (localStorage.getItem('infinityBannerClosed') === 'true') {
-                if (banner) banner.classList.add('hidden');
-                document.body.classList.add('banner-closed');
-            }
+            setTimeout(() => {
+                banner.remove();
+            }, 560);
+        }
         }
 
         function reveal() {
@@ -1123,7 +1151,6 @@
         }
 
         window.addEventListener("scroll", reveal);
-        initBanner();
         buildDots();
         setLanguage(currentLanguage);
         showSlide(0);
