@@ -384,6 +384,111 @@
             100% { left: 150%; }
         }
 
+
+        .homeschool-faq {
+            margin: 22px 0 20px 0;
+            padding: 16px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(28,63,148,0.055), rgba(109,179,63,0.07));
+            border: 1px solid rgba(28,63,148,0.08);
+        }
+
+        .homeschool-faq-title {
+            color: var(--blue-main);
+            font-size: 1rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .homeschool-faq-title::before {
+            content: "?";
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--blue-main), var(--green-main));
+            color: var(--white);
+            font-size: 0.85rem;
+            box-shadow: 0 8px 18px rgba(28,63,148,0.16);
+        }
+
+        .faq-item {
+            border-radius: 14px;
+            background: rgba(255,255,255,0.88);
+            border: 1px solid rgba(226,232,240,0.95);
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(15,23,42,0.04);
+        }
+
+        .faq-item:last-child { margin-bottom: 0; }
+
+        .faq-question {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 14px 14px;
+            color: var(--text-dark);
+            font-weight: 800;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.95rem;
+            line-height: 1.35;
+        }
+
+        .faq-icon {
+            min-width: 26px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(28,63,148,0.08);
+            color: var(--blue-main);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 900;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.38s ease, opacity 0.32s ease;
+            opacity: 0;
+        }
+
+        .faq-answer p {
+            padding: 0 14px 15px 14px;
+            color: var(--text-gray);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .faq-item.active {
+            border-color: rgba(109,179,63,0.35);
+        }
+
+        .faq-item.active .faq-icon {
+            background: linear-gradient(135deg, var(--blue-main), var(--green-main));
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 180px;
+            opacity: 1;
+        }
+
         .contact-list { list-style: none; margin-top: 20px; padding: 0; }
         .contact-list li::before { content: "" !important; }
         .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
@@ -735,6 +840,60 @@
                             <span class="tag">PayPal</span>
                         </div>
                     </div>
+
+                    <div class="homeschool-faq">
+                        <div class="homeschool-faq-title" data-i18n="homeFaqTitle">Preguntas Frecuentes</div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                <span data-i18n="homeFaqQ1">¿Desde qué grados aceptan estudiantes?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p data-i18n="homeFaqA1">Aceptamos estudiantes desde Pre-K hasta 12mo grado.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                <span data-i18n="homeFaqQ2">¿El programa es completamente online?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p data-i18n="homeFaqA2">Sí. El estudiante trabaja mediante una plataforma interactiva, con apoyo y seguimiento académico.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                <span data-i18n="homeFaqQ3">¿Se entregan notas?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p data-i18n="homeFaqA3">Sí. Se entregan notas cada tres meses para que los padres puedan ver el progreso del estudiante.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                <span data-i18n="homeFaqQ4">¿Hay graduaciones y actividades?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p data-i18n="homeFaqA4">Sí. Se realizan graduaciones, cuadro de honor y actividades o giras durante el año para socializar.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                <span data-i18n="homeFaqQ5">¿Cómo puedo solicitar matrícula?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p data-i18n="homeFaqA5">Puede llenar la solicitud desde el botón de esta sección o comunicarse por WhatsApp para recibir orientación.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSevdjUAaKE1AhufzphxAaI9a1iefPrxZiOVTSxg9leHRv1ZiQ/viewform?usp=publish-editor" target="_blank" class="btn-solicitud" data-i18n="applyBtn">Llenar Solicitud</a>
             </div>
@@ -907,6 +1066,12 @@
                 missionText: "<strong>Misión:</strong> Brindar una educación vanguardista de excelencia fundamentada en principios cristianos, transformando el presente de nuestros estudiantes para asegurarles un propósito de éxito en su futuro académico y espiritual.",
                 programHomeTitle: "Programa Homeschooling", homeLi1: "Grados: Pre-K a 12mo", homeLi2: "Plataforma Interactiva", homeLi3: "Maestros disponibles", homeLi4: "Notas y Cuadro de Honor", homePrice: "Matrícula $75 | Mensualidad $50",
                 paymentMethods: "Métodos de Pago:", applyBtn: "Llenar Solicitud",
+                homeFaqTitle: "Preguntas Frecuentes",
+                homeFaqQ1: "¿Desde qué grados aceptan estudiantes?", homeFaqA1: "Aceptamos estudiantes desde Pre-K hasta 12mo grado.",
+                homeFaqQ2: "¿El programa es completamente online?", homeFaqA2: "Sí. El estudiante trabaja mediante una plataforma interactiva, con apoyo y seguimiento académico.",
+                homeFaqQ3: "¿Se entregan notas?", homeFaqA3: "Sí. Se entregan notas cada tres meses para que los padres puedan ver el progreso del estudiante.",
+                homeFaqQ4: "¿Hay graduaciones y actividades?", homeFaqA4: "Sí. Se realizan graduaciones, cuadro de honor y actividades o giras durante el año para socializar.",
+                homeFaqQ5: "¿Cómo puedo solicitar matrícula?", homeFaqA5: "Puede llenar la solicitud desde el botón de esta sección o comunicarse por WhatsApp para recibir orientación.",
                 program4Title: "Programa 4to Año", fourLi1: "Plataforma Interactiva", fourLi2: "Maestro disponible", fourLi3: "Graduaciones", fourLi4: "Flexibilidad de pago", fourPrice: "Costo Total $225",
                 reposicionTitle: "Reposición y Servicios Adicionales", repLi1: "Reposición de Clases", repLi2: "Reposición de Grado", repLi3: "Tutorías Personalizadas", repLi4: "Estudios Supervisados",
                 electivasTitle: "Electivas Disponibles:", elecLi1: "Educación Cristiana", elecLi2: "Artes y Salud", elecLi3: "Tecnología y más...",
@@ -925,6 +1090,12 @@
                 missionText: "<strong>Mission:</strong> To provide innovative, excellent education grounded in Christian principles, transforming our students’ present to guide them toward academic and spiritual success.",
                 programHomeTitle: "Homeschooling Program", homeLi1: "Grades: Pre-K to 12th", homeLi2: "Interactive Platform", homeLi3: "Teachers available", homeLi4: "Grades and Honor Roll", homePrice: "Enrollment $75 | Monthly $50",
                 paymentMethods: "Payment Methods:", applyBtn: "Fill Out Application",
+                homeFaqTitle: "Frequently Asked Questions",
+                homeFaqQ1: "What grades do you accept?", homeFaqA1: "We accept students from Pre-K through 12th grade.",
+                homeFaqQ2: "Is the program fully online?", homeFaqA2: "Yes. Students work through an interactive platform with academic support and follow-up.",
+                homeFaqQ3: "Are grades provided?", homeFaqA3: "Yes. Grades are provided every three months so parents can monitor student progress.",
+                homeFaqQ4: "Are there graduations and activities?", homeFaqA4: "Yes. We offer graduations, honor roll recognition, and activities or trips during the year for social interaction.",
+                homeFaqQ5: "How can I apply for enrollment?", homeFaqA5: "You can fill out the application using the button in this section or contact us through WhatsApp for guidance.",
                 program4Title: "12th Grade Program", fourLi1: "Interactive Platform", fourLi2: "Teacher available", fourLi3: "Graduations", fourLi4: "Flexible payment options", fourPrice: "Total Cost $225",
                 reposicionTitle: "Make-Up and Additional Services", repLi1: "Class Make-Up", repLi2: "Grade Make-Up", repLi3: "Personalized Tutoring", repLi4: "Supervised Studies",
                 electivasTitle: "Available Electives:", elecLi1: "Christian Education", elecLi2: "Arts and Health", elecLi3: "Technology and more...",
@@ -1036,6 +1207,19 @@
                 startX = 0;
                 endX = 0;
             });
+        }
+
+
+        function toggleFaq(button) {
+            const item = button.closest('.faq-item');
+            const faqBox = button.closest('.homeschool-faq');
+            if (!item || !faqBox) return;
+
+            faqBox.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+
+            item.classList.toggle('active');
         }
 
         function createShootingStars() {
